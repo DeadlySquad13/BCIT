@@ -1,0 +1,9 @@
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\bin\Debug\Types.exe.config
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\bin\Debug\Types.XML
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\bin\Debug\Types.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\bin\Debug\Types.pdb
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\bin\Debug\FSharp.Core.dll
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\bin\Debug\FSharp.Core.xml
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\bin\Debug\ru\FSharp.Core.resources.dll
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\obj\Debug\Types.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Types\Types\Types\obj\Debug\Types.pdb

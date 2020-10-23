@@ -1,0 +1,9 @@
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\bin\Debug\SquareRootFSharpClass.exe.config
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\bin\Debug\SquareRootFSharpClass.XML
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\bin\Debug\SquareRootFSharpClass.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\bin\Debug\SquareRootFSharpClass.pdb
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\bin\Debug\FSharp.Core.dll
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\bin\Debug\FSharp.Core.xml
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\bin\Debug\ru\FSharp.Core.resources.dll
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\obj\Debug\SquareRootFSharpClass.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharpClass\obj\Debug\SquareRootFSharpClass.pdb

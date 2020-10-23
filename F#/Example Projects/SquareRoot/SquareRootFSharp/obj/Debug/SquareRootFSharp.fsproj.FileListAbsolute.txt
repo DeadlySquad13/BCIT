@@ -1,0 +1,9 @@
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\bin\Debug\SquareRootFSharp.exe.config
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\bin\Debug\SquareRootFSharp.XML
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\bin\Debug\SquareRootFSharp.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\bin\Debug\SquareRootFSharp.pdb
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\bin\Debug\FSharp.Core.dll
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\bin\Debug\FSharp.Core.xml
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\bin\Debug\ru\FSharp.Core.resources.dll
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\obj\Debug\SquareRootFSharp.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRootFSharp\obj\Debug\SquareRootFSharp.pdb

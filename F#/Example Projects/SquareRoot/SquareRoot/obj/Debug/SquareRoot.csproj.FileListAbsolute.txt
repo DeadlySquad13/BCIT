@@ -1,0 +1,6 @@
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRoot\bin\Debug\SquareRoot.exe.config
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRoot\bin\Debug\SquareRoot.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRoot\bin\Debug\SquareRoot.pdb
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRoot\obj\Debug\SquareRoot.csprojResolveAssemblyReference.cache
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRoot\obj\Debug\SquareRoot.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\SquareRoot\SquareRoot\obj\Debug\SquareRoot.pdb

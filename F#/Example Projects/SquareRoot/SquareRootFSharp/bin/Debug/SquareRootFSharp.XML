@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>SquareRootFSharp</name></assembly>
+<members>
+<member name="T:Program.SquareRootResult">
+<summary>
+Тип решения квадратного уравнения
+</summary>
+</member>
+<member name="M:Program.PrintRoots(System.Double,System.Double,System.Double)">
+<summary>
+Вывод корней (тип unit - аналог void)
+</summary>
+</member>
+<member name="M:Program.CalculateRoots(System.Double,System.Double,System.Double)">
+<summary>
+Функция вычисления корней уравнения
+</summary>
+</member>
+</members>
+</doc>

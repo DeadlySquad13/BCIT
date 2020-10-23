@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareRoot", "SquareRoot\SquareRoot.csproj", "{3346D6A3-A6C7-4FB5-B902-78C37FE32CEF}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SquareRootFSharp", "SquareRootFSharp\SquareRootFSharp.fsproj", "{5AB9A124-FF8B-4255-ADCE-A567179C9A72}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SquareRootFSharpClass", "SquareRootFSharpClass\SquareRootFSharpClass.fsproj", "{77AB37E9-D199-49EE-90E1-16314967B977}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3346D6A3-A6C7-4FB5-B902-78C37FE32CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3346D6A3-A6C7-4FB5-B902-78C37FE32CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3346D6A3-A6C7-4FB5-B902-78C37FE32CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3346D6A3-A6C7-4FB5-B902-78C37FE32CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB9A124-FF8B-4255-ADCE-A567179C9A72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB9A124-FF8B-4255-ADCE-A567179C9A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB9A124-FF8B-4255-ADCE-A567179C9A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB9A124-FF8B-4255-ADCE-A567179C9A72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77AB37E9-D199-49EE-90E1-16314967B977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77AB37E9-D199-49EE-90E1-16314967B977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77AB37E9-D199-49EE-90E1-16314967B977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77AB37E9-D199-49EE-90E1-16314967B977}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

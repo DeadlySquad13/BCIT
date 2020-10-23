@@ -1,0 +1,6 @@
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Structures_F_Sharp\Structures_C_Sharp\bin\Debug\Structures_C_Sharp.exe.config
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Structures_F_Sharp\Structures_C_Sharp\bin\Debug\Structures_C_Sharp.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Structures_F_Sharp\Structures_C_Sharp\bin\Debug\Structures_C_Sharp.pdb
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Structures_F_Sharp\Structures_C_Sharp\obj\Debug\Structures_C_Sharp.csprojResolveAssemblyReference.cache
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Structures_F_Sharp\Structures_C_Sharp\obj\Debug\Structures_C_Sharp.exe
+D:\root\yura\institute\!_КУРСЫ\ФП\projects\Structures_F_Sharp\Structures_C_Sharp\obj\Debug\Structures_C_Sharp.pdb
