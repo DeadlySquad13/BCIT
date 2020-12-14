@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Расстояние Левенштейна — Википедия</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.20wmf12">
+<link rel="alternate" type="application/x-wiki" title="Править" href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit">
+<link rel="edit" title="Править" href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit">
+<link rel="apple-touch-icon" href="http://ru.wikipedia.org/apple-touch-icon.png">
+<link rel="shortcut icon" href="http://ru.wikipedia.org/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://ru.wikipedia.org/w/opensearch_desc.php" title="Википедия (ru)">
+<link rel="EditURI" type="application/rsd+xml" href="http://ru.wikipedia.org/w/api.php?action=rsd">
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="alternate" type="application/atom+xml" title="Википедия&nbsp;— Atom-лента" href="http://ru.wikipedia.org/w/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%A1%D0%B2%D0%B5%D0%B6%D0%B8%D0%B5_%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B8&amp;feed=atom">
+<link rel="stylesheet" href="dist1_files/load_002.css">
+<style type="text/css">.referencetooltip{position:absolute;list-style:none;list-style-image:none;opacity:0;font-size:10px;margin:0;z-index:5;padding:0}.referencetooltip li{border:#080086 2px solid;max-width:260px;padding:10px 8px 13px 8px;margin:0px;background-color:#F7F7F7;box-shadow:2px 4px 2px rgba(0,0,0,0.3);-moz-box-shadow:2px 4px 2px rgba(0,0,0,0.3);-webkit-box-shadow:2px 4px 2px rgba(0,0,0,0.3)}.referencetooltip li+li{margin-left:7px;margin-top:-2px;border:0;padding:0;height:3px;width:0px;background-color:transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;border-top:12px #080086 solid;border-right:7px transparent solid;border-left:7px transparent solid}.referencetooltip>li+li::after{content:'';border-top:8px #F7F7F7 solid;border-right:5px transparent solid;border-left:5px transparent solid;margin-top:-12px;margin-left:-5px;z-index:1;height:0px;width:0px;display:block}.client-js .referencetooltip li ul li{border:none;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;height:auto;width:auto;margin:auto;padding:0;position:static}.RTflipped{padding-top:13px}.referencetooltip.RTflipped li+li{position:absolute;top:2px;border-top:0;border-bottom:12px #080086 solid}.referencetooltip.RTflipped li+li::after{border-top:0;border-bottom:8px #F7F7F7 solid;position:absolute;margin-top:7px}.RTsettings{float:right;height:16px;width:16px;cursor:pointer;background-image:url(//upload.wikimedia.org/wikipedia/commons/e/ed/Cog.png);margin-top:-9px;margin-right:-7px;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-o-transition:opacity 0.15s;-ms-transition:opacity 0.15s;transition:opacity 0.15s;opacity:0.6;filter:alpha(opacity=60)}.RTsettings:hover{opacity:1;filter:alpha(opacity=100)}
+
+/* cache key: ruwiki:resourceloader:filter:minify-css:7:e0ae670bfaf616dbb4e6adf784c66532 */
+
+</style><style type="text/css">.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+
+/* cache key: ruwiki:resourceloader:filter:minify-css:7:4250852ed2349a0d4d0fc6509a3e7d4c */
+
+</style><style type="text/css">.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;font-size:0.8em;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;font-size:0.8em;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{font-size:0.8em;color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.autoellipsis-matched,.highlight{font-weight:bold}
+
+/* cache key: ruwiki:resourceloader:filter:minify-css:7:d3d0fccf9f8cf3b31866dd3fd3326a6a */
+
+</style><style type="text/css">#mw-panel.collapsible-nav .portal{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAABCAMAAAA7MLYKAAAAS1BMVEXb29vy8vLv7+/c3NzZ2dni4uLr6+vt7e3s7Ozw8PDn5+fj4+Ph4eHd3d3f39/o6Ojl5eXp6enx8fHa2trg4ODq6urk5OTz8/PY2NjolWftAAAAO0lEQVR4XrXAhwGAMAgEQB5I71X3n9QpPHqAGZidt2e02G8yedciQkv1/YPqIpFSdzbp9tjGsd4xhwl8yuMKHhkJhm8AAAAASUVORK5CYII=) left top no-repeat;background:url(//bits.wikimedia.org/static-1.20wmf12/extensions/Vector/modules/images/portal-break.png?2012-09-17T15:48:20Z) left top no-repeat!ie;padding:0.25em 0 !important;margin:-11px 9px 10px 11px}#mw-panel.collapsible-nav .portal h5{color:#4D4D4D;font-weight:normal;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAD1BMVEX////d3d2ampqxsbF5eXmCtCYvAAAAAXRSTlMAQObYZgAAADBJREFUeF6dzNEJACAMA1HdINQJCp1Ebv+ZlLYLaD4f4cbnDNi6MAO8KCHJ+7X02j3mzgMQe93HcQAAAABJRU5ErkJggg==) left center no-repeat;background:url(//bits.wikimedia.org/static-1.20wmf12/extensions/Vector/modules/images/open.png?2012-09-17T15:48:20Z) left center no-repeat!ie;padding:4px 0 3px 1.5em;margin-bottom:0}#mw-panel.collapsible-nav .portal h5:hover{cursor:pointer;text-decoration:none}#mw-panel.collapsible-nav .portal h5 a{color:#4D4D4D;text-decoration:none}#mw-panel.collapsible-nav .portal .body{background:none !important;padding-top:0;display:none}#mw-panel.collapsible-nav .portal .body ul li{padding:0.25em 0} #mw-panel.collapsible-nav .portal.first h5{display:none}#mw-panel.collapsible-nav .portal.first{background-image:none;margin-top:0} #mw-panel.collapsible-nav .portal.persistent .body{display:block}#mw-panel.collapsible-nav .portal.persistent h5{background:none !important;padding-left:0.7em;cursor:default}#mw-panel.collapsible-nav .portal.persistent .body{margin-left:0.5em} #mw-panel.collapsible-nav .portal.collapsed h5{color:#0645AD;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAADFBMVEX///95eXnd3d2dnZ3aAo3QAAAAAXRSTlMAQObYZgAAADFJREFUeF5dyzEKACAMA0CXolNe2Id09Kl5igZahWY4AiGjZwmIuS9GEcJfY63Ix88Bol4EYP1O7JMAAAAASUVORK5CYII=) left center no-repeat;background:url(//bits.wikimedia.org/static-1.20wmf12/extensions/Vector/modules/images/closed-ltr.png?2012-09-17T15:48:20Z) left center no-repeat!ie;margin-bottom:0}#mw-panel.collapsible-nav .portal.collapsed h5 a{color:#0645AD}#mw-panel.collapsible-nav .portal.collapsed h5:hover{text-decoration:underline}
+
+/* cache key: ruwiki:resourceloader:filter:minify-css:7:6941106bb061f6fa7dedeeb4582a0d63 */
+
+</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="dist1_files/load.css">
+<noscript><link rel="stylesheet" href="//bits.wikimedia.org/ru.wikipedia.org/load.php?debug=false&amp;lang=ru&amp;modules=noscript&amp;only=styles&amp;skin=vector&amp;*" /></noscript>
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+
+/* cache key: ruwiki:resourceloader:filter:minify-css:7:adaaa2053f397cc0796346388a941c8d */
+</style>
+
+<script src="dist1_files/load_004.php"></script><script src="dist1_files/load_005.php"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Расстояние_Левенштейна","wgTitle":"Расстояние Левенштейна","wgCurRevisionId":47799571,"wgArticleId":75079,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Автоматическая обработка текстов","Динамическое программирование","Строковые алгоритмы"],"wgBreakFrames":false,"wgPageContentLanguage":"ru","wgSeparatorTransformTable":[",	."," 	,"],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"],"wgMonthNamesShort":["","янв","фев","мар","апр","мая","июн","июл","авг","сен","окт","ноя","дек"],"wgRelevantPageName":"Расстояние_Левенштейна","wgRestrictionEdit":[],"wgRestrictionMove":[],"wgSearchNamespaces":[0],"wgVectorEnabledModules":{"collapsiblenav":true,"collapsibletabs":true,"editwarning":true,"expandablesearch":false,"footercleanup":false,"sectioneditlinks":false,"simplesearch":true,"experiments":true},"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false},"wgFlaggedRevsParams":{"tags":{"accuracy":{"levels":3,"quality":2,"pristine":4}}},"wgStableRevisionId":38058764,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","Geo":{"city":"","country":""},"wgNoticeProject":"wikipedia"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":0,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":false,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3
+,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"flaggedrevssimpleui":1,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"vector-simplesearch":1,"useeditwarning":1,"vector-collapsiblenav":1,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"variant":"ru","language":"ru","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"searchNs102":false,"searchNs103":false,"searchNs104":false,"searchNs105":false,"searchNs106":false,"searchNs107":false,"gadget-BKL":1,"gadget-collapserefs":1,"gadget-directLinkToCommons":1,"gadget-referenceTooltips":1});;},{},{});mw.loader.implement(
+"user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+
+/* cache key: ruwiki:resourceloader:filter:minify-js:7:d04e39a579c15b3423407dff8cd29da5 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralNotice.bannerController"]);
+}</script><script type="text/javascript" src="dist1_files/load.php"></script>
+<style type="text/css">/*<![CDATA[*/
+.source-text {line-height: normal;}
+.source-text li, .source-text pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for text
+ * CSS class: source-text, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.text.source-text .de1, .text.source-text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text.source-text  {font-family:monospace;}
+.text.source-text .imp {font-weight: bold; color: red;}
+.text.source-text li, .text.source-text .li1 {font-weight: normal; vertical-align:top;}
+.text.source-text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text.source-text .li2 {font-weight: bold; vertical-align:top;}
+.text.source-text .ln-xtra, .text.source-text li.ln-xtra, .text.source-text div.ln-xtra {background-color: #ffc;}
+.text.source-text span.xtra { display:block; }
+
+/*]]>*/
+</style><script src="dist1_files/geoiplookup"></script><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins-1.20wmf12/vector/csshover.min.htc")}</style><![endif]--><style type="text/css">.IPA, .Unicode { font-family: "Arial Unicode MS", "Lucida Sans Unicode"; }</style><script type="text/javascript" src="dist1_files/index.php"></script><style type="text/css">#mw-fr-revisiontag {display:none}</style><script type="text/javascript" src="dist1_files/index_002.php"></script><script type="text/javascript" src="dist1_files/index_005.php"></script><style type="text/css">.iw-focus {font-weight: bold} .iw-babel {font-style: italic}</style></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Расстояние_Левенштейна skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><div id="centralNotice" class="cn-default"><style type="text/css">
+#cn-toggle-box {
+  float: right;
+}
+.wlm_2012_org_image {
+  border: 0 
+}
+</style>
+
+<div id="wlm-banner" class="plainlinks" style="background:#FCFCFC; border:1px solid #9E0101; margin: 0 auto 1em auto; font-size: 120%; overflow: hidden; text-align: center; padding: 0.5ex;">
+<div id="cn-toggle-box">
+    <a href="#" title="Close" onclick="hideBanner();return false;"><img src="dist1_files/closewindow19x19.png" alt="Close" border="0"></a>
+</div>
+<div style="margin-top: 17px">
+<a class="wlm-mainlink" href="http://wikilovesmonuments.ru/?pk_campaign=Centralnotice-Record">
+<img src="dist1_files/60px-Wiki_Loves_Monuments_Logo_notext.png" class="wlm_2012_org_image" style="float:left; margin-left: 15px; margin-top: -17px">
+<img src="dist1_files/60px-Pyramid_of_Kukulkan_Chichen_Itza_WLM1.png" class="wlm_2012_org_image" style="float:right; margin-right: 10px; margin-top: -15px"></a><a class="wlm-mainlink" href="http://wikilovesmonuments.ru/?pk_campaign=Centralnotice-Record">Примите участие в крупнейшем в мире фото-соревновании и помогите улучшить Википедию!</a></div></div></div><!-- CentralNotice --><script>mw.centralNotice.initialize();</script><script type="text/javascript">
+/* <![CDATA[ */
+document.writeln("\x3cdiv id=\"localNotice\" lang=\"ru\" dir=\"ltr\"\x3e\x3c/div\x3e");
+/* ]]> */
+</script><div id="localNotice" dir="ltr" lang="ru"></div>
+</div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span dir="auto">Расстояние Левенштейна</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent"><span style="float: right;" class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=0" title="Править введение">править</a>]</span>
+								<!-- tagline -->
+				<div id="siteSub">Материал из Википедии — свободной энциклопедии</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><div id="mw-fr-reviewnotice" class="flaggedrevs_preview plainlinks">Текущая версия страницы пока <a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0_%D1%81%D1%82%D0%B0%D1%82%D0%B5%D0%B9/%D0%9F%D0%BE%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B4%D0%BB%D1%8F_%D1%87%D0%B8%D1%82%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9" title="Википедия:Проверка статей/Пояснение для читателей">не проверялась</a> опытными участниками и может значительно отличаться от <a class="external text" href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;stable=1">версии</a>, проверенной 28 сентября 2011; 
+проверки требуют <a class="external text" href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=38058764&amp;diff=cur&amp;diffonly=0">11 правок</a>.</div><div id="mw-fr-revisiontag" class="flaggedrevs_short plainlinks noprint"><div class="flaggedrevs_short_basic"><img class="flaggedrevs-icon" src="dist1_files/1.png" alt="Текущая версия" title="Текущая версия"><img id="mw-fr-revisiontoggle" class="fr-toggle-arrow" src="dist1_files/arrow-down.png" style="display: inline;" alt="показать/скрыть подробности"></div>
+<div id="mw-fr-revisiondetails-wrapper" style="position:relative;"><div id="mw-fr-revisiondetails" class="flaggedrevs_short_details" style="display:none">Текущая версия страницы пока <a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0_%D1%81%D1%82%D0%B0%D1%82%D0%B5%D0%B9/%D0%9F%D0%BE%D1%8F%D1%81%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B4%D0%BB%D1%8F_%D1%87%D0%B8%D1%82%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9" title="Википедия:Проверка статей/Пояснение для читателей">не проверялась</a> опытными участниками и может значительно отличаться от <a class="external text" href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;stable=1">версии</a>, проверенной 28 сентября 2011; 
+проверки требуют <a class="external text" href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=38058764&amp;diff=cur&amp;diffonly=0">11 правок</a>.</div>
+</div>
+</div>
+</div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Перейти к:					<a href="#mw-head">навигация</a>, 					<a href="#p-search">поиск</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="ru"><p><b>Расстояние Левенштейна</b> (также <b>редакционное расстояние</b> или <b>дистанция редактирования</b>) между двумя строками в <a href="http://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BE%D1%80%D0%B8%D1%8F_%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8" title="Теория информации">теории информации</a> и <a href="http://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%8F_%D0%BB%D0%B8%D0%BD%D0%B3%D0%B2%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0" title="Компьютерная лингвистика">компьютерной лингвистике</a>&nbsp;—
+ это минимальное количество операций вставки одного символа, удаления 
+одного символа и замены одного символа на другой, необходимых для 
+превращения одной строки в другую.</p>
+<p>Впервые задачу упомянул в <a href="http://ru.wikipedia.org/wiki/1965_%D0%B3%D0%BE%D0%B4" title="1965 год">1965 году</a> советский математик <a href="http://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%98%D0%BE%D1%81%D0%B8%D1%84%D0%BE%D0%B2%D0%B8%D1%87" title="Левенштейн, Владимир Иосифович">Владимир Иосифович Левенштейн</a> при изучении последовательностей <img class="tex" alt="0-1" src="dist1_files/c2eb282156233b5d827219971c8b04c2.png">.<sup id="cite_ref-0" class="reference"><a href="#cite_note-0">[1]</a></sup> Впоследствии более общую задачу для произвольного алфавита связали с его именем. Большой вклад в изучение вопроса внёс Гасфилд.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[2]</a></sup></p>
+<table id="toc" class="toc">
+<tbody><tr>
+<td>
+<div id="toctitle">
+<h2>Содержание</h2>
+<span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">убрать</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#.D0.9F.D1.80.D0.B8.D0.BC.D0.B5.D0.BD.D0.B5.D0.BD.D0.B8.D0.B5"><span class="tocnumber">1</span> <span class="toctext">Применение</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#.D0.A0.D0.B5.D0.B4.D0.B0.D0.BA.D1.86.D0.B8.D0.BE.D0.BD.D0.BD.D0.BE.D0.B5_.D0.BF.D1.80.D0.B5.D0.B4.D0.BF.D0.B8.D1.81.D0.B0.D0.BD.D0.B8.D0.B5"><span class="tocnumber">2</span> <span class="toctext">Редакционное предписание</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#.D0.9E.D0.B1.D0.BE.D0.B1.D1.89.D0.B5.D0.BD.D0.B8.D1.8F"><span class="tocnumber">3</span> <span class="toctext">Обобщения</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#.D0.A0.D0.B0.D0.B7.D0.BD.D1.8B.D0.B5_.D1.86.D0.B5.D0.BD.D1.8B_.D0.BE.D0.BF.D0.B5.D1.80.D0.B0.D1.86.D0.B8.D0.B9"><span class="tocnumber">3.1</span> <span class="toctext">Разные цены операций</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#.D0.A2.D1.80.D0.B0.D0.BD.D1.81.D0.BF.D0.BE.D0.B7.D0.B8.D1.86.D0.B8.D1.8F"><span class="tocnumber">3.2</span> <span class="toctext">Транспозиция</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#.D0.A4.D0.BE.D1.80.D0.BC.D1.83.D0.BB.D0.B0"><span class="tocnumber">4</span> <span class="toctext">Формула</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="#.D0.94.D0.BE.D0.BA.D0.B0.D0.B7.D0.B0.D1.82.D0.B5.D0.BB.D1.8C.D1.81.D1.82.D0.B2.D0.BE"><span class="tocnumber">4.1</span> <span class="toctext">Доказательство</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="#.D0.90.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC_.D0.92.D0.B0.D0.B3.D0.BD.D0.B5.D1.80.D0.B0.C2.A0.E2.80.94_.D0.A4.D0.B8.D1.88.D0.B5.D1.80.D0.B0"><span class="tocnumber">5</span> <span class="toctext">Алгоритм Вагнера&nbsp;— Фишера</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="#.D0.9F.D0.B0.D0.BC.D1.8F.D1.82.D1.8C"><span class="tocnumber">5.1</span> <span class="toctext">Память</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#.D0.A1.D0.BC._.D1.82.D0.B0.D0.BA.D0.B6.D0.B5"><span class="tocnumber">6</span> <span class="toctext">См. также</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#.D0.9F.D1.80.D0.B8.D0.BC.D0.B5.D1.87.D0.B0.D0.BD.D0.B8.D1.8F"><span class="tocnumber">7</span> <span class="toctext">Примечания</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#.D0.A1.D1.81.D1.8B.D0.BB.D0.BA.D0.B8"><span class="tocnumber">8</span> <span class="toctext">Ссылки</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=1" title="Править секцию «Применение»">править</a>]</span> <span class="mw-headline" id=".D0.9F.D1.80.D0.B8.D0.BC.D0.B5.D0.BD.D0.B5.D0.BD.D0.B8.D0.B5">Применение</span></h2>
+<p>Расстояние Левенштейна и его обобщения активно применяется:</p>
+<ul>
+<li>для исправления ошибок в слове (в поисковых системах, базах данных, 
+при вводе текста, при автоматическом распознавании отсканированого 
+текста или речи).</li>
+<li>для сравнения текстовых файлов утилитой <a href="http://ru.wikipedia.org/wiki/Diff" title="Diff">diff</a> и ей подобными. Здесь роль «символов» играют строки, а роль «строк»&nbsp;— файлы.</li>
+<li>в биоинформатике для сравнения <a href="http://ru.wikipedia.org/wiki/%D0%93%D0%B5%D0%BD" title="Ген">генов</a>, <a href="http://ru.wikipedia.org/wiki/%D0%A5%D1%80%D0%BE%D0%BC%D0%BE%D1%81%D0%BE%D0%BC%D0%B0" title="Хромосома">хромосом</a> и <a href="http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%BB%D0%BE%D0%BA" title="Белок" class="mw-redirect">белков</a>.</li>
+</ul>
+<p>С точки зрения приложений определение расстояния между словами или 
+текстовыми полями по Левенштейну обладает следующими недостатками:</p>
+<ol>
+<li>При перестановке местами слов или частей слов получаются сравнительно большие расстояния;</li>
+<li>Расстояния между совершенно разными короткими словами оказываются 
+небольшими, в то время как расстояния между очень похожими длинными 
+словами оказываются значительными.</li>
+</ol>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=2" title="Править секцию «Редакционное предписание»">править</a>]</span> <span class="mw-headline" id=".D0.A0.D0.B5.D0.B4.D0.B0.D0.BA.D1.86.D0.B8.D0.BE.D0.BD.D0.BD.D0.BE.D0.B5_.D0.BF.D1.80.D0.B5.D0.B4.D0.BF.D0.B8.D1.81.D0.B0.D0.BD.D0.B8.D0.B5">Редакционное предписание</span></h2>
+<p><i>Редакционным предписанием</i> называется последовательность 
+действий, необходимых для получения из первой строки второй кратчайшим 
+образом. Обычно действия обозначаются так: <b>D</b> (<a href="http://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA" title="Английский язык">англ.</a>&nbsp;<i><span xml:lang="en" lang="en">delete</span></i>)&nbsp;— удалить, <b>I</b> (англ. insert)&nbsp;— вставить, <b>R</b> (<i><span xml:lang="en" lang="en">replace</span></i>)&nbsp;— заменить, <b>M</b> (<i><span xml:lang="en" lang="en">match</span></i>)&nbsp;— совпадение.</p>
+<p>Например, для 2-х строк «CONNECT» и «CONEHEAD» можно построить следующую таблицу преобразований:</p>
+<table class="wikitable">
+<tbody><tr>
+<th><b>M</b></th>
+<th><b>M</b></th>
+<th><b>M</b></th>
+<th><b>I</b></th>
+<th><b>R</b></th>
+<th><b>M</b></th>
+<th><b>R</b></th>
+<th><b>R</b></th>
+</tr>
+<tr>
+<td><b>C</b></td>
+<td><b>O</b></td>
+<td><b>N</b></td>
+<td><b>N</b></td>
+<td><b>E</b></td>
+<td><b>C</b></td>
+<td><b>T</b></td>
+<td></td>
+</tr>
+<tr>
+<td><b>C</b></td>
+<td><b>O</b></td>
+<td><b>N</b></td>
+<td><b>E</b></td>
+<td><b>H</b></td>
+<td><b>E</b></td>
+<td><b>A</b></td>
+<td><b>D</b></td>
+</tr>
+</tbody></table>
+<p>Найти только расстояние Левенштейна&nbsp;— более простая задача, чем найти ещё и редакционное предписание (подробнее см. ниже).</p>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=3" title="Править секцию «Обобщения»">править</a>]</span> <span class="mw-headline" id=".D0.9E.D0.B1.D0.BE.D0.B1.D1.89.D0.B5.D0.BD.D0.B8.D1.8F">Обобщения</span></h2>
+<h3><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=4" title="Править секцию «Разные цены операций»">править</a>]</span> <span class="mw-headline" id=".D0.A0.D0.B0.D0.B7.D0.BD.D1.8B.D0.B5_.D1.86.D0.B5.D0.BD.D1.8B_.D0.BE.D0.BF.D0.B5.D1.80.D0.B0.D1.86.D0.B8.D0.B9">Разные цены операций</span></h3>
+<p>Цены операций могут зависеть от вида операции (вставка, удаление, 
+замена) и/или от участвующих в ней символов, отражая разную вероятность 
+мутаций в биологии<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">[3]</a></sup>, разную вероятность разных ошибок при вводе текста и&nbsp;т.&nbsp;д. В общем случае:</p>
+<ul>
+<li>w(a, b)&nbsp;— цена замены символа a на символ b</li>
+<li>w(ε, b)&nbsp;— цена вставки символа b</li>
+<li>w(a, ε)&nbsp;— цена удаления символа a</li>
+</ul>
+<p>Необходимо найти последовательность замен, минимизирующую суммарную 
+цену. Расстояние Левенштейна является частным случаем этой задачи при</p>
+<ul>
+<li>w(a, а) = 0</li>
+<li>w(a, b) = 1 при a≠b</li>
+<li>w(ε, b) = 1</li>
+<li>w(a, ε) = 1</li>
+</ul>
+<p>Как частный случай, так и задачу для произвольных w, решает алгоритм 
+Вагнера&nbsp;— Фишера, приведённый ниже. Здесь и ниже мы считаем, что 
+все w неотрицательны, и действует правило треугольника: если две 
+последовательные операции можно заменить одной, это не ухудшает общую 
+цену (например, заменить символ x на y, а потом с y на z не лучше, чем 
+сразу x на z).</p>
+<h3><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=5" title="Править секцию «Транспозиция»">править</a>]</span> <span class="mw-headline" id=".D0.A2.D1.80.D0.B0.D0.BD.D1.81.D0.BF.D0.BE.D0.B7.D0.B8.D1.86.D0.B8.D1.8F">Транспозиция</span></h3>
+<p>Если к списку разрешённых операций добавить транспозицию (два соседних символа меняются местами), получается <a href="http://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83_%E2%80%94_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Расстояние Дамерау — Левенштейна">расстояние Дамерау — Левенштейна</a>.
+ Для неё также существует алгоритм, требующий O(MN) операций. Дамерау 
+показал, что 80&nbsp;% ошибок при наборе текста человеком являются 
+транспозициями. Кроме того, расстояние Дамерау&nbsp;— Левенштейна 
+используется и в биоинформатике.</p>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=6" title="Править секцию «Формула»">править</a>]</span> <span class="mw-headline" id=".D0.A4.D0.BE.D1.80.D0.BC.D1.83.D0.BB.D0.B0">Формула</span></h2>
+<p>Здесь и далее считается, что элементы строк нумеруются с первого, как
+ принято в математике, а не с нулевого, как принято в языках <a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%B8_%28%D1%8F%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%29" title="Си (язык программирования)">C</a>, <a href="http://ru.wikipedia.org/wiki/C%2B%2B" title="C++">C++</a>, <a href="http://ru.wikipedia.org/wiki/Java" title="Java">Java</a>.</p>
+<p>Пусть <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> и <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png">&nbsp;— две строки (длиной <img class="tex" alt="M" src="dist1_files/69691c7bdcc3ce6d5d8a1361f22d04ac.png"> и <img class="tex" alt="N" src="dist1_files/8d9c307cb7f3c4a32822a51922d1ceaa.png"> соответственно) над некоторым <a href="http://ru.wikipedia.org/wiki/%D0%90%D0%BB%D1%84%D0%B0%D0%B2%D0%B8%D1%82_%28%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0%29" title="Алфавит (математика)">алфавитом</a>, тогда редакционное расстояние (расстояние Левенштейна) <img class="tex" alt="{\rm d}(S_1, S_2)" src="dist1_files/934ce0e8a45b00b658a59177434f14ac.png"> можно подсчитать по следующей рекуррентной формуле</p>
+<p><img class="tex" alt="\ {\rm d}(S_1, S_2) = D(M,N)" src="dist1_files/9b85f57377f63463d17a355ac6c8c505.png"> , где</p>
+<p><img class="tex" alt="D(i, j) = \left\{\begin{array}{llcl}
+0&amp;&amp;;&amp;i = 0,\ j = 0\\
+i&amp;&amp;;&amp;j = 0,\ i &gt; 0\\
+j&amp;&amp;;&amp;i = 0,\ j &gt; 0\\
+\rm{min}(\\
+&amp;D(i, j - 1) + 1,\\
+&amp;D(i - 1, j) + 1,&amp;;&amp;j &gt; 0,\ i &gt; 0\\
+&amp;D(i - 1, j - 1) + {\rm m}(S_1[i], S_2[j])\\
+)
+\end{array}\right.
+" src="dist1_files/1d1012e604549170be94611de9c7bf14.png">,</p>
+<p>где <img class="tex" alt="{\rm m}(a,b)" src="dist1_files/e5686dc4f2d1cd75866523c1519eb5c3.png"> равна нулю, если <img class="tex" alt="a = b" src="dist1_files/7acaac15494e6820b1ed6d8b539af089.png"> и единице в противном случае; <img class="tex" alt="\min(a, b, c)" src="dist1_files/6782e5dc18fd4726d90ebd649a0c2f23.png"> возвращает наименьший из аргументов.</p>
+<p>Здесь шаг по <img class="tex" alt="i" src="dist1_files/865c0c0b4ab0e063e5caa3387c1a8741.png"> символизирует удаление (D) из первой строки, по <img class="tex" alt="j" src="dist1_files/363b122c528f54df4a0446b6bab05515.png"> — вставку (I) в первую строку, а шаг по обоим индексам символизирует замену символа (R) или отсутствие изменений (M).</p>
+<p>Очевидно, справедливы следующие утверждения:</p>
+<ul>
+<li><img class="tex" alt="{\rm{d}}(S_1,S_2) \geqslant \bigl| |S_1| - |S_2| \bigr|" src="dist1_files/adba0dc1005a2044ee6b4c9589aea855.png"></li>
+<li><img class="tex" alt="{\rm{d}}(S_1,S_2) \leqslant \max\bigl( |S_1| , |S_2| \bigr)" src="dist1_files/950c0ee5963d8db0c31ddec20efa6cd0.png"></li>
+<li><img class="tex" alt="\mathop{\rm{d}}(S_1,S_2) = 0 \Leftrightarrow S_1 = S_2" src="dist1_files/83d299e37a9c1264cac43e3b589f4e4d.png"></li>
+</ul>
+<h3><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=7" title="Править секцию «Доказательство»">править</a>]</span> <span class="mw-headline" id=".D0.94.D0.BE.D0.BA.D0.B0.D0.B7.D0.B0.D1.82.D0.B5.D0.BB.D1.8C.D1.81.D1.82.D0.B2.D0.BE">Доказательство</span></h3>
+<p>Рассмотрим формулу более подробно. Очевидно, что редакционное 
+расстояние между двумя пустыми строками равно нулю. Так же очевидно то, 
+что чтобы получить пустую строку из строки длиной <img class="tex" alt="i" src="dist1_files/865c0c0b4ab0e063e5caa3387c1a8741.png">, нужно совершить <img class="tex" alt="i" src="dist1_files/865c0c0b4ab0e063e5caa3387c1a8741.png"> операций удаления, а чтобы получить строку длиной <img class="tex" alt="j" src="dist1_files/363b122c528f54df4a0446b6bab05515.png"> из пустой, нужно произвести <img class="tex" alt="j" src="dist1_files/363b122c528f54df4a0446b6bab05515.png">
+ операций вставки. В нетривиальном случае нужно выбрать минимальную 
+«стоимость» из трёх вариантов. Вставка/удаление будет в любом случае 
+стоить одну операцию, а вот замена может не понадобиться, если символы 
+равны — тогда шаг по обоим индексам бесплатный. Формализация этих 
+рассуждений приводит к формуле, указанной выше. Более строгое 
+доказательство приведено в книге Дэна Гасфилда.</p>
+<p>Осталось рассмотреть нетривиальный случай, когда обе строки непусты.</p>
+<p>Для начала заметим, что в оптимальной последовательности операций, их
+ можно произвольно менять местами. В самом деле, рассмотрим две 
+последовательные операции:</p>
+<ul>
+<li>Две замены одного и того же символа&nbsp;— неоптимально (если мы 
+заменили x на y, потом y на z, выгоднее было сразу заменить x на z).</li>
+<li>Две замены разных символов можно менять местами</li>
+<li>Два стирания или две вставки можно менять местами</li>
+<li>Вставка символа с его последующим стиранием&nbsp;— неоптимально (можно их обе отменить)</li>
+<li>Стирание и вставку разных символов можно менять местами</li>
+<li>Вставка символа с его последующей заменой&nbsp;— неоптимально (излишняя замена)</li>
+<li>Вставка символа и замена другого символа меняются местами</li>
+<li>Замена символа с его последующим стиранием&nbsp;— неоптимально (излишняя замена)</li>
+<li>Стирание символа и замена другого символа меняются местами</li>
+</ul>
+<p>Пускай <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> кончается на символ «a», <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png"> кончается на символ «b». Есть три варианта:</p>
+<ol>
+<li>Символ «а», на который кончается <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png">, в какой-то момент был стёрт. Сделаем это стирание первой операцией. Тогда мы стёрли символ «a», после чего превратили первые <img class="tex" alt="i-1" src="dist1_files/800ba394e806c049c98cf4b570d04c72.png"> символов <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> в <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png"> (на что потребовалось <img class="tex" alt="D(i-1,\ j)" src="dist1_files/26f42cd8cbeda3ef9e06028e5c767572.png"> операций), значит, всего потребовалось <img class="tex" alt="D(i-1,\ j)+1" src="dist1_files/dd9731bbba8bae602198607f042fa4dd.png"> операций</li>
+<li>Символ «b», на который кончается <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png">, в какой-то момент был добавлен. Сделаем это добавление последней операцией. Мы превратили <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> в первые <img class="tex" alt="j-1" src="dist1_files/5aa66ae2348be0b0928bfb00aeb33893.png"> символов <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png">, после чего добавили «b». Аналогично предыдущему случаю, потребовалось <img class="tex" alt="D(i,\ j-1)+1" src="dist1_files/f92398b3f313d958cbc7056637a35d69.png"> операций.</li>
+<li>Оба предыдущих утверждения неверны. Если мы добавляли символы справа
+ от финального «a», то чтобы сделать последним символом «b», мы должны 
+были или в какой-то момент добавить его (но тогда утверждение 2 было бы 
+верно), либо заменить на него один из этих добавленных символов (что 
+тоже невозможно, потому что добавление символа с его последующей заменой
+ неоптимально). Значит, символов справа от финального «a» мы не 
+добавляли. Самого финального «a» мы не стирали, поскольку утверждение 1 
+неверно. Значит, единственный способ изменения последнего символа&nbsp;—
+ его замена. Заменять его 2 или больше раз неоптимально. Значит,
+<ol>
+<li>Если <img class="tex" alt="a=b" src="dist1_files/7acaac15494e6820b1ed6d8b539af089.png">,
+ мы последний символ не меняли. Поскольку мы его также не стирали и не 
+приписывали ничего справа от него, он не влиял на наши действия, и, 
+значит, мы выполнили <img class="tex" alt="D(i-1,\ j-1)" src="dist1_files/a75380803ff33bc727b1ad7f74165e3d.png"> операций.</li>
+<li>Если <img class="tex" alt="a\ne b" src="dist1_files/dc3203c92c1e38e7956be2b7ae4189de.png">,
+ мы последний символ меняли один раз. Сделаем эту замену первой. В 
+дальнейшем, аналогично предыдущему случаю, мы должны выполнить <img class="tex" alt="D(i-1,\ j-1)" src="dist1_files/a75380803ff33bc727b1ad7f74165e3d.png"> операций, значит, всего потребуется <img class="tex" alt="D(i-1,\ j-1)+1" src="dist1_files/9aa34aa2fad553012e78e0b54f51149f.png"> операций.</li>
+</ol>
+</li>
+</ol>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=8" title="Править секцию «Алгоритм Вагнера&nbsp;— Фишера»">править</a>]</span> <span class="mw-headline" id=".D0.90.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC_.D0.92.D0.B0.D0.B3.D0.BD.D0.B5.D1.80.D0.B0.C2.A0.E2.80.94_.D0.A4.D0.B8.D1.88.D0.B5.D1.80.D0.B0">Алгоритм Вагнера&nbsp;— Фишера</span></h2>
+<p>Для нахождения кратчайшего расстояния необходимо вычислить матрицу D, используя <a href="#.D0.A4.D0.BE.D1.80.D0.BC.D1.83.D0.BB.D0.B0">вышеприведённую формулу</a>. Её можно вычислять как по строкам, так и по столбцам. Псевдокод алгоритма:</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="text source-text">
+<pre class="de1"> для всех i от 0 до M
+   для всех j от 0 до N
+     вычислить D(i, j)
+ вернуть D(M,N)
+</pre></div>
+</div>
+<p>Или в более развёрнутом виде, и при произвольных ценах замен, вставок и удалений:</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="text source-text">
+<pre class="de1"> D(0,0) = 0
+ для всех j от 1 до N
+   D(0,j) = D(0,j-1) + цена вставки символа S2[j]
+ для всех i от 1 до M
+   D(i,0) = D(i-1,0) + цена удаления символа S1[i]
+   для всех j от 1 до N
+     D(i,j) = min(
+        D(i-1, j) + цена удаления символа S1[i],
+        D(i, j-1) + цена вставки символа S2[j],
+        D(i-1, j-1) + цена замены символа S1[i] на символ S2[j]
+     )
+ вернуть D(M,N)
+</pre></div>
+</div>
+<p>(Напоминаем, что элементы строк нумеруются с <i>первого</i>, а не с нулевого.)</p>
+<p>Для восстановления редакционного предписания требуется вычислить 
+матрицу D, после чего идти из правого нижнего угла (M,N) в левый 
+верхний, на каждом шаге ища минимальное из трёх значений:</p>
+<ul>
+<li>если минимально (D(i-1, j) + цена удаления символа S1[i]), добавляем удаление символа S1[i] и идём в (i-1, j)</li>
+<li>если минимально (D(i, j-1) + цена вставки символа S2[j]), добавляем вставку символа S1[i] и идём в (i, j-1)</li>
+<li>если минимально (D(i-1, j-1) + цена замены символа S1[i] на символ 
+S2[j]), добавляем замену S1[i] на S2[j] (если они не равны; иначе ничего
+ не добавляем), после чего идём в (i-1, j-1)</li>
+</ul>
+<p>Здесь (i, j)&nbsp;— клетка матрицы, в которой мы находимся на данном 
+шаге. Если минимальны два из трёх значений (или равны все три), это 
+означает, что есть 2 или 3 равноценных редакционных предписания.</p>
+<p>Этот алгоритм называется алгоритмом Вагнера&nbsp;— Фишера. Он 
+предложен Р. Вагнером (R. A. Wagner) и М. Фишером (M. J. Fischer) в 1974
+ году.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[4]</a></sup></p>
+<h3><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=9" title="Править секцию «Память»">править</a>]</span> <span class="mw-headline" id=".D0.9F.D0.B0.D0.BC.D1.8F.D1.82.D1.8C">Память</span></h3>
+<p>Алгоритм в виде, описанном выше, требует <img class="tex" alt="\Theta(M \cdot N)" src="dist1_files/5a53f892654a484f38e56af03d9f8ee3.png"> операций и такую же память. Последнее может быть неприятным: так, для сравнения файлов длиной в 10<sup>5</sup> строк потребуется около 40 гигабайт памяти.</p>
+<p>Если требуется только расстояние, легко уменьшить требуемую память до <img class="tex" alt="\Theta(\min(M,N))" src="dist1_files/1706e00ed74eb38417c386989b402b44.png">.
+ Для этого надо учесть, что после вычисления любой строки предыдущая 
+строка больше не нужна. Более того, после вычисления D(i, j) не нужны 
+также D(i-1,0) … D(i-1,j-1). Поэтому алгоритм можно переписать как</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="text source-text">
+<pre class="de1"> для всех i от 0 до M
+   для всех j от 0 до N
+     вычислить D(i, j)
+   если i&gt;0
+     стереть строку D(i-1)
+ вернуть D(M, N)
+</pre></div>
+</div>
+<p>или даже</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="text source-text">
+<pre class="de1"> для всех i от 0 до M
+   для всех j от 0 до N
+     вычислить D(i, j)
+     если i&gt;0 и j&gt;0
+       стереть D(i-1, j-1)
+ вернуть D(M, N)
+</pre></div>
+</div>
+<p>Если требуется редакционное предписание, экономия памяти усложняется.</p>
+<p>Для того, чтобы обеспечить время <img class="tex" alt="\Theta(M \cdot N)" src="dist1_files/5a53f892654a484f38e56af03d9f8ee3.png"> при памяти <img class="tex" alt="\Theta(\min(M,N))" src="dist1_files/1706e00ed74eb38417c386989b402b44.png">, определим матрицу E минимальных расстояний между <i>суффиксами</i> строк, то есть E(i, j)&nbsp;— расстояние между последними i символами <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> и последними j символами <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png">. Очевидно, матрицу E можно вычислить аналогично матрице D, и так же быстро.</p>
+<p>Теперь опишем алгоритм, считая, что <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png">&nbsp;— кратчайшая из двух строк.</p>
+<ul>
+<li>Если длина одной из строк (или обеих) не больше 1, задача тривиальна. Если нет, выполним следующие шаги.</li>
+<li>Разделим строку <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> на две подстроки длиной <img class="tex" alt="M/2" src="dist1_files/8db948222e5325649284bbaafff23970.png">. (Если M нечётно, то длины подстрок будут <img class="tex" alt="(M-1)/2" src="dist1_files/b7a3463cfda78e1e24fdb3ff10c095e3.png"> и <img class="tex" alt="(M+1)/2" src="dist1_files/727fb822e0827ef8987e26cd8af3134e.png">.) Обозначим подстроки <img class="tex" alt="S_1^-" src="dist1_files/0d3dc52dfe4f7302071a4b6875a78d4e.png"> и <img class="tex" alt="S_1^+" src="dist1_files/bc018ab08cd8bb0ce36456b3cf2d5dcc.png">.</li>
+<li>Для <img class="tex" alt="S_1^-" src="dist1_files/0d3dc52dfe4f7302071a4b6875a78d4e.png"> вычислим последнюю строку матрицы D, а для <img class="tex" alt="S_1^+" src="dist1_files/bc018ab08cd8bb0ce36456b3cf2d5dcc.png">&nbsp;— последнюю строку матрицы E.</li>
+<li>Найдём i такое, что <img class="tex" alt="D(|S_1^-|, i) + E(|S_1^+|, N-i)" src="dist1_files/2e142c6973cb7c07bc5b953bdbf3abba.png">
+ минимально. Здесь D и Е&nbsp;— матрицы из предыдущего шага, но мы 
+используем только их последние строки. Таким образом, мы нашли разбиение
+ <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png"> на две подстроки, минимизирующее сумму расстояния левой половины <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> до левой части <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png"> и расстояния правой половины <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png"> до правой части <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png">. Следовательно, левая подстрока <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png"> соответствует левой половине <img class="tex" alt="S_1" src="dist1_files/8dc4eef060814e559aff4c5fac3f51fe.png">, а правая&nbsp;— правой.</li>
+<li>Рекурсивно ищем редакционное предписание, превращающее <img class="tex" alt="S_1^-" src="dist1_files/0d3dc52dfe4f7302071a4b6875a78d4e.png"> в левую часть <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png"> (то есть в подстроку <img class="tex" alt="S2[1...i]" src="dist1_files/307e0e9a00f42c7f367e450086c61554.png">)</li>
+<li>Рекурсивно ищем редакционное предписание, превращающее <img class="tex" alt="S_1^+" src="dist1_files/bc018ab08cd8bb0ce36456b3cf2d5dcc.png"> в правую часть <img class="tex" alt="S_2" src="dist1_files/97a6ae0695c4b2723ff5c8bccdb1e735.png"> (то есть в подстроку <img class="tex" alt="S2[i+1...N]" src="dist1_files/20f54de07b0f7d3a3c0d65cba76c205f.png">).</li>
+<li>Объединяем оба редакционных предписания.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[5]</a></sup></li>
+</ul>
+<p>Время выполнения удовлетворяет (с точностью до умножения на константу) условию</p>
+<dl>
+<dd><img class="tex" alt="T(M,N)=MN+T(M/2,N')+T(M/2,N-N'),\ 0\le N'\le N" src="dist1_files/7d34b9638f60144495c2660fb32cc98e.png">,</dd>
+</dl>
+<p>откуда следует (доказывается индукцией по M)</p>
+<dl>
+<dd><img class="tex" alt="T(M,N) \le 2MN" src="dist1_files/4bb36140ff0eeb45bbe544b7a0177e94.png"></dd>
+</dl>
+<p>следовательно</p>
+<dl>
+<dd><img class="tex" alt="T(M,N) = \Theta(M \cdot N)" src="dist1_files/1942042f8c91a8b3c51d00fdc712c63a.png"></dd>
+</dl>
+<p>Требуемая память пропорциональна <img class="tex" alt="N+N/2+N/4+...=2N" src="dist1_files/72e27e49715c22f4bcb90ea84c20a6e5.png"></p>
+<p>Кроме того, есть алгоритмы, экономящие память за счёт существенного 
+замедления, например, время становится кубическим, а не квадратичным, по
+ длине строк.</p>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=10" title="Править секцию «См. также»">править</a>]</span> <span class="mw-headline" id=".D0.A1.D0.BC._.D1.82.D0.B0.D0.BA.D0.B6.D0.B5">См. также</span></h2>
+<ul>
+<li><a href="http://ru.wikipedia.org/w/index.php?title=%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%A5%D0%B8%D1%80%D1%87%D0%B1%D0%B5%D1%80%D0%B3%D0%B0&amp;action=edit&amp;redlink=1" class="new" title="Алгоритм Хирчберга (страница отсутствует)">Алгоритм Хирчберга</a></li>
+<li><a href="http://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%A5%D1%8D%D0%BC%D0%BC%D0%B8%D0%BD%D0%B3%D0%B0" title="Расстояние Хэмминга">Расстояние Хэмминга</a></li>
+<li><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%99%D0%B5%D0%BD%D1%86%D0%B5%D0%BD%D0%B0_%E2%80%94_%D0%A8%D0%B0%D0%BD%D0%BD%D0%BE%D0%BD%D0%B0&amp;action=edit&amp;redlink=1" class="new" title="Расстояние Йенцена — Шаннона (страница отсутствует)">Расстояние Йенцена — Шаннона</a></li>
+<li><a href="http://ru.wikipedia.org/wiki/Soundex" title="Soundex">Soundex</a>-метод</li>
+<li><a href="http://ru.wikipedia.org/wiki/%D0%A4%D0%BE%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA" title="Фонетический поиск">Фонетический поиск</a></li>
+</ul>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=11" title="Править секцию «Примечания»">править</a>]</span> <span class="mw-headline" id=".D0.9F.D1.80.D0.B8.D0.BC.D0.B5.D1.87.D0.B0.D0.BD.D0.B8.D1.8F">Примечания</span></h2>
+<div class="references-small" style="">
+<ol class="references">
+<li id="cite_note-0"><b><a href="#cite_ref-0">↑</a></b> <span class="reference-text">В.&nbsp;И.&nbsp;Левенштейн.
+ Двоичные коды с исправлением выпадений, вставок и замещений символов. 
+Доклады Академий Наук СССР, 1965. 163.4:845-848.</span></li>
+<li id="cite_note-1"><b><a href="#cite_ref-1">↑</a></b> <span class="reference-text">Гасфилд.
+ Строки, деревья и последовательности в алгоритмах. Информатика и 
+вычислительная биология. Невский Диалект БВХ-Петербург, 2003.</span></li>
+<li id="cite_note-2"><b><a href="#cite_ref-2">↑</a></b> <span class="reference-text">См., например: <a rel="nofollow" class="external free" href="http://www.medlit.ru/medrus/mg/mg080237.htm">http://www.medlit.ru/medrus/mg/mg080237.htm</a></span></li>
+<li id="cite_note-3"><b><a href="#cite_ref-3">↑</a></b> <span class="reference-text">R. A. Wagner, M. J. Fischer. The string-to-string correction problem. <a href="http://ru.wikipedia.org/wiki/JACM" title="JACM" class="mw-redirect">J. ACM</a> 21 1 (1974). P. 168—173</span></li>
+<li id="cite_note-4"><b><a href="#cite_ref-4">↑</a></b> <span class="reference-text">При этом во втором редакционном предписании нужно увеличить номера символов первой строки на <img class="tex" alt="|S_1^-|" src="dist1_files/65a46ed6d6552b84e3f866c98933afb2.png">, а второй строки на <img class="tex" alt="i" src="dist1_files/865c0c0b4ab0e063e5caa3387c1a8741.png">, поскольку теперь они отсчитываются с начала строк, a не с их середины.</span></li>
+</ol>
+</div>
+<h2><span class="editsection">[<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=12" title="Править секцию «Ссылки»">править</a>]</span> <span class="mw-headline" id=".D0.A1.D1.81.D1.8B.D0.BB.D0.BA.D0.B8">Ссылки</span></h2>
+<div class="infobox sisterproject noprint plainlinks" style="width:auto;">
+<div class="floatleft"><a href="http://commons.wikimedia.org/wiki/File:Wikibooks-logo.svg?uselang=ru" class="image" title="Логотип Викиучебника"><img alt="Логотип Викиучебника" src="dist1_files/40px-Wikibooks-logo.png" height="40" width="40"></a></div>
+Имеется <a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%B8%D0%BA" title="Викиучебник">викиучебник</a> по&nbsp;теме<br>
+<b>«<a href="http://ru.wikibooks.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" class="extiw" title="b:Расстояние Левенштейна">Расстояние Левенштейна</a>»</b></div>
+<ul>
+<li><a href="http://ru.wikibooks.org/wiki/%D0%A0%D0%B5%D0%B4%D0%B0%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5#.D0.A1.D0.B1.D0.B0.D0.BB.D0.B0.D0.BD.D1.81.D0.B8.D1.80.D0.BE.D0.B2.D0.B0.D0.BD.D0.BD.D1.8B.D0.B9_.D0.B2.D0.B0.D1.80.D0.B8.D0.B0.D0.BD.D1.82" class="extiw" title="b:Редакционное предписание">b:Редакционное предписание#Сбалансированный вариант</a></li>
+<li><a rel="nofollow" class="external text" href="http://rain.ifmo.ru/cat/view.php/vis/strings/levenshtein-2009">Визуализатор алгоритма</a></li>
+<li><a rel="nofollow" class="external text" href="http://habrahabr.ru/post/114997/">Нечёткий поиск в тексте и словаре</a></li>
+<li><a rel="nofollow" class="external text" href="http://muzhig.ru/levenstein-distance-python/">Пошаговое объяснение алгоритма на примере и код на Python</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 897/1000000
+Post-expand include size: 926/2048000 bytes
+Template argument size: 54/2048000 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key ruwiki:pcache:idhash:75079-0!0!0!!ru!4!* and timestamp 20120903044044 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Источник — «<a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=47799571">http://ru.wikipedia.org/w/index.php?title=Расстояние_Левенштейна&amp;oldid=47799571</a>»				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D0%B8" title="Служебная:Категории">Категории</a>: <ul><li><a href="http://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0_%D1%82%D0%B5%D0%BA%D1%81%D1%82%D0%BE%D0%B2" title="Категория:Автоматическая обработка текстов">Автоматическая обработка текстов</a></li><li><a href="http://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5" title="Категория:Динамическое программирование">Динамическое программирование</a></li><li><a href="http://ru.wikipedia.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%A1%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B5_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B" title="Категория:Строковые алгоритмы">Строковые алгоритмы</a></li></ul></div></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Личные инструменты</h5>
+	<ul>
+		<li id="pt-createaccount"><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%92%D1%85%D0%BE%D0%B4&amp;returnto=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5+%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;type=signup">Зарегистрировать нового участника</a></li>
+		<li id="pt-login"><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%92%D1%85%D0%BE%D0%B4&amp;returnto=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5+%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Здесь можно зарегистрироваться в системе, но это необязательно. [alt-shift-o]" accesskey="o">Представиться системе</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Пространства имён</h5>
+	<ul>
+					<li id="ca-nstab-main" class="selected"><span><a href="http://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Содержание статьи [alt-shift-c]" accesskey="c">Статья</a></span></li>
+					<li id="ca-talk"><span><a href="http://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Обсуждение содержания страницы [alt-shift-t]" accesskey="t">Обсуждение</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Варианты</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Просмотры</h5>
+	<ul>
+					<li id="ca-view" class="collapsible"><span><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;stable=1">Чтение</a></span></li>
+					<span class="placeholder" style="display: none;"></span>
+					<li id="ca-edit"><span><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit" title="Эту статью можно изменять. Перед сохранением изменений, пожалуйста, нажмите кнопку предварительного просмотра для визуальной проверки результата [alt-shift-e]" accesskey="e">Правка</a></span></li>
+					<span class="placeholder" style="display: none;"></span>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu filledPortlet">
+	<h5 style="width: 26px;"><span>Действия</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul><li style="display: list-item;" id="ca-current" class="collapsible collapsible selected"><span><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;stable=0&amp;redirect=no" title="Показать текущую версию этой страницы [alt-shift-v]" accesskey="v">Текущая версия</a></span></li><li style="display: list-item;" id="ca-history" class="collapsible"><span><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=history" title="Журнал изменений страницы [alt-shift-h]" accesskey="h">История</a></span></li>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Поиск</label></h5>
+	<form action="/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input autocomplete="off" placeholder="Поиск" tabindex="1" name="search" title="Искать это слово [alt-shift-f]" accesskey="f" id="searchInput">						<button name="button" title="Найти страницы, содержащие указанный текст" id="searchButton" width="12" height="13"><img src="dist1_files/search-ltr.png" alt="Найти"></button>								<input name="title" value="Служебная:Поиск" type="hidden">
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint collapsible-nav">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(//upload.wikimedia.org/wikipedia/commons/f/f6/Wikipedia-logo-v2-ru.png);" href="http://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0" title="Заглавная страница"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal first persistent" id="p-navigation">
+	<h5>Навигация</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage"><a href="http://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0" title="Перейти на заглавную страницу [alt-shift-z]" accesskey="z">Заглавная страница</a></li>
+			<li id="n-browse"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9F%D0%BE%D0%B8%D1%81%D0%BA_%D0%BF%D0%BE_%D0%BA%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F%D0%BC" title="Поиск по категориям">Рубрикация</a></li>
+			<li id="n-index"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%90%D0%BB%D1%84%D0%B0%D0%B2%D0%B8%D1%82%D0%BD%D1%8B%D0%B9_%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C" title="Поиск по двум первым буквам">Указатель А — Я</a></li>
+			<li id="n-featured"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%98%D0%B7%D0%B1%D1%80%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8" title="Статьи, считающиеся лучшими статьями проекта">Избранные статьи</a></li>
+			<li id="n-randompage"><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%A1%D0%BB%D1%83%D1%87%D0%B0%D0%B9%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0" title="Посмотреть случайную страницу [alt-shift-x]" accesskey="x">Случайная статья</a></li>
+			<li id="n-currentevents"><a href="http://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D0%BB:%D0%A2%D0%B5%D0%BA%D1%83%D1%89%D0%B8%D0%B5_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F" title="Статьи о текущих событиях в мире">Текущие события</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- participation -->
+<div class="portal expanded" id="p-participation">
+	<h5 tabindex="2"><a href="#">Участие</a></h5>
+	<div style="display: block;" class="body">
+		<ul>
+			<li id="n-bug_in_article"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F_%D0%BE%D0%B1_%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%D1%85" title="Сообщить об ошибке в этой статье">Сообщить об ошибке</a></li>
+			<li id="n-portal"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D0%BB_%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0" title="О проекте, о том, что вы можете сделать, где что находится">Портал сообщества</a></li>
+			<li id="n-forum"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A4%D0%BE%D1%80%D1%83%D0%BC" title="Форум участников Википедии">Форум</a></li>
+			<li id="n-recentchanges"><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%A1%D0%B2%D0%B5%D0%B6%D0%B8%D0%B5_%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B8" title="Список последних изменений [alt-shift-r]" accesskey="r">Свежие правки</a></li>
+			<li id="n-newpages"><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%9D%D0%BE%D0%B2%D1%8B%D0%B5_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B" title="Список недавно созданных страниц">Новые страницы</a></li>
+			<li id="n-help"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B0" title="Справочник по проекту «Википедия»">Справка</a></li>
+			<li id="n-sitesupport"><a href="http://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=20120717SB001&amp;uselang=ru" title="Поддержите нас">Пожертвования</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /participation -->
+
+<!-- coll-print_export -->
+<div class="portal collapsed" id="p-coll-print_export">
+	<h5 tabindex="3"><a href="#">Печать/экспорт</a></h5>
+	<div class="body">
+		<ul id="collectionPortletList"><li id="coll-create_a_book"><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%9A%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F_%D0%BA%D0%BD%D0%B8%D0%B3&amp;bookcmd=book_creator&amp;referer=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5+%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Создать книгу или коллекцию статей" rel="nofollow">Создать книгу</a></li><li id="coll-download-as-rl"><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%9A%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F_%D0%BA%D0%BD%D0%B8%D0%B3&amp;bookcmd=render_article&amp;arttitle=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5+%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=47799571&amp;writer=rl" title="Скачать PDF-версию этой вики-страницы" rel="nofollow">Скачать как PDF</a></li><li id="t-print"><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;printable=yes" title="Версия этой страницы для печати [alt-shift-p]" accesskey="p">Версия для печати</a></li></ul>	</div>
+</div>
+
+<!-- /coll-print_export -->
+
+<!-- TOOLBOX -->
+<div class="portal collapsed" id="p-tb">
+	<h5 tabindex="4"><a href="#">Инструменты</a></h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%A1%D1%81%D1%8B%D0%BB%D0%BA%D0%B8_%D1%81%D1%8E%D0%B4%D0%B0/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Список всех страниц, которые ссылаются на эту страницу [alt-shift-j]" accesskey="j">Ссылки сюда</a></li>
+			<li id="t-recentchangeslinked"><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%A1%D0%B2%D1%8F%D0%B7%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5_%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B8/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Последние изменения в страницах, на которые ссылается эта страница [alt-shift-k]" accesskey="k">Связанные правки</a></li>
+			<li id="t-specialpages"><a href="http://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%A1%D0%BF%D0%B5%D1%86%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B" title="Список служебных страниц [alt-shift-q]" accesskey="q">Спецстраницы</a></li>
+			<li id="t-permalink"><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=47799571" title="Постоянная ссылка на эту версию страницы">Постоянная ссылка</a></li>
+<li id="t-cite"><a href="http://ru.wikipedia.org/w/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%A6%D0%B8%D1%82%D0%B0%D1%82%D0%B0&amp;page=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;id=47799571" title="Информация о том, как цитировать эту страницу">Цитировать страницу</a></li>		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal expanded" id="p-lang">
+	<h5 tabindex="5"><a href="#">На других языках</a></h5>
+	<div style="display: block;" class="body">
+		<ul>
+			<li class="interwiki-af"><a href="http://af.wikipedia.org/wiki/Levenshteinafstand" title="Levenshteinafstand" hreflang="af" lang="af">Afrikaans</a></li>
+			<li class="interwiki-ca"><a href="http://ca.wikipedia.org/wiki/Dist%C3%A0ncia_de_Levenshtein" title="Distància de Levenshtein" hreflang="ca" lang="ca">Català</a></li>
+			<li class="interwiki-de"><a href="http://de.wikipedia.org/wiki/Levenshtein-Distanz" title="Levenshtein-Distanz" hreflang="de" lang="de">Deutsch</a></li>
+			<li class="interwiki-en"><a href="http://en.wikipedia.org/wiki/Levenshtein_distance" title="Levenshtein distance" hreflang="en" lang="en">English</a></li>
+			<li class="interwiki-es"><a href="http://es.wikipedia.org/wiki/Distancia_de_Levenshtein" title="Distancia de Levenshtein" hreflang="es" lang="es">Español</a></li>
+			<li class="interwiki-fa"><a href="http://fa.wikipedia.org/wiki/%D9%81%D8%A7%D8%B5%D9%84%D9%87_%D9%84%D9%88%D9%86%E2%80%8C%D8%A7%D8%B4%D8%AA%D8%A7%DB%8C%D9%86" title="فاصله لون‌اشتاین" hreflang="fa" lang="fa">فارسی</a></li>
+			<li class="interwiki-fi"><a href="http://fi.wikipedia.org/wiki/Leven%C5%A1teinin_et%C3%A4isyys" title="Levenšteinin etäisyys" hreflang="fi" lang="fi">Suomi</a></li>
+			<li class="interwiki-fr"><a href="http://fr.wikipedia.org/wiki/Distance_de_Levenshtein" title="Distance de Levenshtein" hreflang="fr" lang="fr">Français</a></li>
+			<li class="interwiki-he"><a href="http://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%97%D7%A7_%D7%9C%D7%95%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F" title="מרחק לוינשטיין" hreflang="he" lang="he">עברית</a></li>
+			<li class="interwiki-it"><a href="http://it.wikipedia.org/wiki/Distanza_di_Levenshtein" title="Distanza di Levenshtein" hreflang="it" lang="it">Italiano</a></li>
+			<li class="interwiki-ja"><a href="http://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%BC%E3%83%99%E3%83%B3%E3%82%B7%E3%83%A5%E3%82%BF%E3%82%A4%E3%83%B3%E8%B7%9D%E9%9B%A2" title="レーベンシュタイン距離" hreflang="ja" lang="ja">日本語</a></li>
+			<li class="interwiki-lv"><a href="http://lv.wikipedia.org/wiki/Leven%C5%A1teina_att%C4%81lums" title="Levenšteina attālums" hreflang="lv" lang="lv">Latviešu</a></li>
+			<li class="interwiki-nds"><a href="http://nds.wikipedia.org/wiki/Levenshtein-Afstand" title="Levenshtein-Afstand" hreflang="nds" lang="nds">Plattdüütsch</a></li>
+			<li class="interwiki-nl"><a href="http://nl.wikipedia.org/wiki/Levenshteinafstand" title="Levenshteinafstand" hreflang="nl" lang="nl">Nederlands</a></li>
+			<li class="interwiki-nn"><a href="http://nn.wikipedia.org/wiki/Levenshtein-distanse" title="Levenshtein-distanse" hreflang="nn" lang="nn">‪norsk (nynorsk)‬</a></li>
+			<li class="interwiki-pl"><a href="http://pl.wikipedia.org/wiki/Odleg%C5%82o%C5%9B%C4%87_Levenshteina" title="Odległość Levenshteina" hreflang="pl" lang="pl">Polski</a></li>
+			<li class="interwiki-pt"><a href="http://pt.wikipedia.org/wiki/Dist%C3%A2ncia_Levenshtein" title="Distância Levenshtein" hreflang="pt" lang="pt">Português</a></li>
+			<li class="interwiki-simple"><a href="http://simple.wikipedia.org/wiki/Levenshtein_Distance" title="Levenshtein Distance" hreflang="simple" lang="simple">Simple English</a></li>
+			<li class="interwiki-sr"><a href="http://sr.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B0%D1%98%D0%BD%D0%BE%D0%B2%D0%BE_%D1%80%D0%B0%D1%81%D1%82%D0%BE%D1%98%D0%B0%D1%9A%D0%B5" title="Левенштајново растојање" hreflang="sr" lang="sr">Српски / srpski</a></li>
+			<li class="interwiki-sv"><a href="http://sv.wikipedia.org/wiki/Levenshteinavst%C3%A5nd" title="Levenshteinavstånd" hreflang="sv" lang="sv">Svenska</a></li>
+			<li class="interwiki-tg"><a href="http://tg.wikipedia.org/wiki/%D0%9C%D0%B0%D1%81%D0%BE%D1%84%D0%B0%D0%B8_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD" title="Масофаи Левенштейн" hreflang="tg" lang="tg">Тоҷикӣ</a></li>
+			<li class="interwiki-uk"><a href="http://uk.wikipedia.org/wiki/%D0%92%D1%96%D0%B4%D1%81%D1%82%D0%B0%D0%BD%D1%8C_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Відстань Левенштейна" hreflang="uk" lang="uk">Українська</a></li>
+			<li class="interwiki-vi"><a href="http://vi.wikipedia.org/wiki/Kho%E1%BA%A3ng_c%C3%A1ch_Levenshtein" title="Khoảng cách Levenshtein" hreflang="vi" lang="vi">Tiếng Việt</a></li>
+			<li class="interwiki-zh"><a href="http://zh.wikipedia.org/wiki/%E7%B7%A8%E8%BC%AF%E8%B7%9D%E9%9B%A2" title="編輯距離" hreflang="zh" lang="zh">中文</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> Последнее изменение этой страницы: 04:40, 3 сентября 2012.</li>
+											<li id="footer-info-copyright">Текст доступен по <a rel="license" href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%A2%D0%B5%D0%BA%D1%81%D1%82_%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%B8_Creative_Commons_Attribution-ShareAlike_3.0_Unported">лицензии Creative Commons Attribution-ShareAlike</a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>; в отдельных случаях могут действовать дополнительные условия.
+<span class="noprint">Подробнее см. <a href="http://wikimediafoundation.org/wiki/Terms_of_Use/ru">Условия использования</a>.</span><br>
+Wikipedia® — зарегистрированный товарный знак некоммерческой организации <a href="http://wikimediafoundation.org/wiki/%D0%9F%D1%80%D0%B8%D1%91%D0%BC%D0%BD%D0%B0%D1%8F">Wikimedia Foundation, Inc.</a><br></li><li class="noprint"><a class="internal" href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D1%8B">Свяжитесь с нами</a></li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://wikimediafoundation.org/wiki/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0_%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8" title="wikimedia:Политика конфиденциальности">Политика конфиденциальности</a></li>
+											<li id="footer-places-about"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5" title="Википедия:Описание">Описание Википедии</a></li>
+											<li id="footer-places-disclaimer"><a href="http://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%BA%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F:%D0%9E%D1%82%D0%BA%D0%B0%D0%B7_%D0%BE%D1%82_%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8" title="Википедия:Отказ от ответственности">Отказ от ответственности</a></li>
+											<li id="footer-places-mobileview"><a href="http://ru.m.wikipedia.org/w/index.php?title=%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;mobileaction=toggle_view_mobile" class="noprint">Мобильная версия</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://wikimediafoundation.org/"><img src="dist1_files/wikimedia-button.png" alt="Wikimedia Foundation" height="31" width="88"></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="dist1_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" height="31" width="88"></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script src="dist1_files/load_003.php"></script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.legacy.mwsuggest","ext.gadget.collapserefs","ext.gadget.directLinkToCommons","ext.gadget.referenceTooltips","ext.vector.collapsibleNav","ext.vector.collapsibleTabs","ext.vector.editWarning","ext.vector.simpleSearch","ext.flaggedRevs.advanced"], null, true);
+}</script><script type="text/javascript" src="dist1_files/load_007.php"></script><script type="text/javascript" src="dist1_files/load_006.php"></script>
+<script src="dist1_files/index_004.php"></script>
+<script src="dist1_files/load_002.php"></script><script type="text/javascript" src="dist1_files/index_003.php"></script>
+<!-- Served by mw29 in 0.150 secs. -->
+	
+
+<div class="suggestions" style="top: 72px; width: 204px; display: none; left: auto; right: 28.9px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Задача о расстоянии Дамерау-Левенштейна — Викиконспекты</title>
+<meta charset="UTF-8">
+<meta name="generator" content="MediaWiki 1.18.1">
+<link rel="alternate" type="application/x-wiki" title="Править" href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit">
+<link rel="edit" title="Править" href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit">
+<link rel="shortcut icon" href="http://neerc.ifmo.ru/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://neerc.ifmo.ru/wiki/opensearch_desc.php" title="Викиконспекты (ru)">
+<link rel="EditURI" type="application/rsd+xml" href="http://neerc.ifmo.ru/wiki/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Викиконспекты&nbsp;— Atom-лента" href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:RecentChanges&amp;feed=atom">
+<link rel="stylesheet" href="dist3_files/load.css">
+<style type="text/css" media="all">.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+
+/* cache key: wikidb:resourceloader:filter:minify-css:4:4250852ed2349a0d4d0fc6509a3e7d4c */
+</style><style type="text/css" media="all">.js-messagebox{margin:1em 5%;padding:0.5em 2.5%;border:1px solid #ccc;background-color:#fcfcfc;font-size:0.8em}.js-messagebox .js-messagebox-group{margin:1px;padding:0.5em 2.5%;border-bottom:1px solid #ddd}.js-messagebox .js-messagebox-group:last-child{border-bottom:thin none transparent}
+
+/* cache key: wikidb:resourceloader:filter:minify-css:4:8b08bdc91c52a9ffba396dccfb5b473c */
+</style><meta name="ResourceLoaderDynamicStyles" content="">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}a.new,#quickbar a.new{color:#ba0000}
+
+/* cache key: wikidb:resourceloader:filter:minify-css:4:c88e2bcd56513749bec09a7e29cb3ffa */
+</style>
+<script src="dist3_files/load_005.php"></script><script src="dist3_files/load.php"></script>
+<script>if(window.mw){
+	mw.config.set({"wgCanonicalNamespace": "", "wgCanonicalSpecialPageName": false, "wgNamespaceNumber": 0, "wgPageName": "Задача_о_расстоянии_Дамерау-Левенштейна", "wgTitle": "Задача о расстоянии Дамерау-Левенштейна", "wgCurRevisionId": 18545, "wgArticleId": 1608, "wgIsArticle": true, "wgAction": "view", "wgUserName": null, "wgUserGroups": ["*"], "wgCategories": ["Дискретная математика и алгоритмы", "Динамическое программирование"], "wgBreakFrames": false, "wgRestrictionEdit": [], "wgRestrictionMove": []});
+}
+</script><script>if(window.mw){
+	mw.loader.load(["mediawiki.page.startup"]);
+}
+</script><script type="text/javascript" src="dist3_files/load_003.php"></script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/wiki/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Задача_о_расстоянии_Дамерау-Левенштейна action-view skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content">
+			<a id="top"></a>
+			<div class="js-messagebox" id="mw-js-message" style="display:none;"></div>
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">Задача о расстоянии Дамерау-Левенштейна</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">Материал из Викиконспекты</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Перейти к: <a href="#mw-head">навигация</a>,
+					<a href="#p-search">поиск</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div dir="ltr" class="mw-content-ltr" lang="ru"><table border="0" width="100%">
+<tbody><tr><td style="background-color: #ddd"><b>Определение:</b></td></tr>
+<tr><td style="border:1px dashed #2f6fab; padding: 8px; background-color: #fcfcfc;"><b>Расстояние Дамерау — Левенштейна</b>
+ (Damerau — Levenshtein distance) между двумя строками, состоящими из 
+конечного числа символов&nbsp;— это минимальное число операций вставки, 
+удаления, замены одного символа и транспозиции двух соседних символов, 
+необходимых для перевода одной строки в другую.</td></tr>
+</tbody></table>
+<p>Является модификацией <a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%BC_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8,_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%92%D0%B0%D0%B3%D0%BD%D0%B5%D1%80%D0%B0-%D0%A4%D0%B8%D1%88%D0%B5%D1%80%D0%B0" title="Задача о редакционном расстоянии, алгоритм Вагнера-Фишера">расстояния Левенштейна</a>, отличается от него добавлением операции перестановки.
+</p><p>Расстояние Дамерау — Левенштейна является метрикой. 
+(Предполагаем, что цены операций таковы, что выполнено правило 
+треугольника: если две последовательные операции можно заменить одной, 
+то это не ухудшает общую цену.)
+</p><p><br>
+</p>
+<table id="toc" class="toc"><tbody><tr><td><div id="toctitle"><h2>Содержание</h2><span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">убрать</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#.D0.9F.D1.80.D0.B0.D0.BA.D1.82.D0.B8.D1.87.D0.B5.D1.81.D0.BA.D0.BE.D0.B5_.D0.BF.D1.80.D0.B8.D0.BC.D0.B5.D0.BD.D0.B5.D0.BD.D0.B8.D0.B5"><span class="tocnumber">1</span> <span class="toctext">Практическое применение</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#.D0.A3.D0.BF.D1.80.D0.BE.D1.89.D1.91.D0.BD.D0.BD.D1.8B.D0.B9_.D0.B0.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC"><span class="tocnumber">2</span> <span class="toctext">Упрощённый алгоритм</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#.D0.9A.D0.BE.D1.80.D1.80.D0.B5.D0.BA.D1.82.D0.BD.D1.8B.D0.B9_.D0.B0.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC"><span class="tocnumber">3</span> <span class="toctext">Корректный алгоритм</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#.D0.A1.D0.BC._.D1.82.D0.B0.D0.BA.D0.B6.D0.B5"><span class="tocnumber">4</span> <span class="toctext">См. также</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#C.D1.81.D1.8B.D0.BB.D0.BA.D0.B8"><span class="tocnumber">5</span> <span class="toctext">Cсылки</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<h2><span class="editsection">[<a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=1" title="Править секцию: Практическое применение">править</a>]</span> <span class="mw-headline" id=".D0.9F.D1.80.D0.B0.D0.BA.D1.82.D0.B8.D1.87.D0.B5.D1.81.D0.BA.D0.BE.D0.B5_.D0.BF.D1.80.D0.B8.D0.BC.D0.B5.D0.BD.D0.B5.D0.BD.D0.B8.D0.B5">Практическое применение</span></h2>
+<p>Расстояние Дамерау — Левенштейна, как и метрика <a rel="nofollow" class="external text" href="http://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%98%D0%BE%D1%81%D0%B8%D1%84%D0%BE%D0%B2%D0%B8%D1%87">Левенштейна</a>,
+ является мерой "схожести" двух строк. Алгоритм его поиска находит 
+применение в реализации нечёткого поиска, а также в биоинформатике 
+(сравнение ДНК), несмотря на то, что изначально алгоритм разрабатывался 
+для сравнения текстов, набранных человеком (<a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Frederick_J._Damerau">Дамерау</a>
+ показал, что 80% человеческих ошибок при наборе текстов составляют 
+перестановки соседних символов, пропуск символа, добавление нового 
+символа, и ошибка в символе. Поэтому метрика Дамерау — Левенштейна часто
+ используется в редакторских программах для проверки правописания).   
+</p>
+<h2><span class="editsection">[<a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=2" title="Править секцию: Упрощённый алгоритм">править</a>]</span> <span class="mw-headline" id=".D0.A3.D0.BF.D1.80.D0.BE.D1.89.D1.91.D0.BD.D0.BD.D1.8B.D0.B9_.D0.B0.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC">Упрощённый алгоритм</span></h2>
+<p>Не решает задачу корректно, но бывает полезен на практике.
+</p><p>Здесь и далее будем использовать следующие обозначения: <img class="tex" style="vertical-align:0px" src="dist3_files/c0ee96ed63a226aac9001cdaa774d9c0.png" alt="S"> и <img class="tex" style="vertical-align:0px" src="dist3_files/649fd121052f9871e51f08f9a1aa4e5a.png" alt="T"> — строки, между которыми требуется найти расстояние Дамерау — Левенштейна; <img class="tex" style="vertical-align:0px" src="dist3_files/e554aeb0e3d1ec4efa3c4278f9e8f8c4.png" alt="M"> и <img class="tex" style="vertical-align:0px" src="dist3_files/649848397ed11109e9aae72b7e83c8c5.png" alt="N"> — их длины соответственно.
+</p><p>Рассмотрим алгоритм, отличающийся от алгоритма поиска расстояния Левенштейна одной проверкой (храним матрицу <img class="tex" style="vertical-align:0px" src="dist3_files/f1e7ef4c9823591869c2c3614a6df963.png" alt="D">, где <img class="tex" style="vertical-align:-4px" src="dist3_files/277955d2c8983e98ebc3da7b5b245be2.png" alt="D(i, j)">&nbsp;— расстояние между префиксами строк: первыми i символами строки <img class="tex" style="vertical-align:0px" src="dist3_files/c0ee96ed63a226aac9001cdaa774d9c0.png" alt="S"> и первыми j символами строки <img class="tex" style="vertical-align:0px" src="dist3_files/649fd121052f9871e51f08f9a1aa4e5a.png" alt="T">). Рекуррентное соотношение имеет вид:
+</p><p>Ответ на задачу — <img class="tex" style="vertical-align:-4px" src="dist3_files/09ce7d28de6849b93c3665fe7bb74e26.png" alt="D(M,N)"> , где
+</p><p><img class="tex" style="vertical-align:-17px" src="dist3_files/63c0abda6bbe277438ffaf7662f590ce.png" alt="D(i, j) = \left\{\begin{array}{lllc} min(A, D(i - 2, j - 2) + transposeCost)&amp;&amp;;i &gt; 1,\ j &gt; 1,\ S[i] = T[j-1],\ S[i-1] = T[j]\\ A&amp;&amp;;\text{otherwise}\\ \end{array}\right.">
+</p><p><img class="tex" style="vertical-align:-86px" src="dist3_files/f8233dbd6eceb3dc1a80ac68d3b73d54.png" alt="A = \left\{\begin{array}{llcl} 0&amp;&amp;;&amp;i = 0,\ j = 0\\ i&amp;&amp;;&amp;j = 0,\ i &gt; 0\\ j&amp;&amp;;&amp;i = 0,\ j &gt; 0\\ D(i - 1, j - 1)&amp;&amp;;&amp;S[i] = T[j]\\ \rm{min}(\\ &amp;D(i, j - 1) + insertCost\\ &amp;D(i - 1, j) + deleteCost&amp;;&amp;j &gt; 0,\ i &gt; 0,\ S[i] \ne T[j]\\ &amp;D(i - 1, j - 1) + replaceCost\\ ) \end{array}\right.">
+</p><p>Таким образом для получения ответа необходимо заполнить матрицу D, пользуясь рекуррентным соотношением.
+Сложность алгоритма: <img class="tex" style="vertical-align:-4px" src="dist3_files/6d3ffd00954c7b19e775c3a2e0e098c1.png" alt="O\left (M \cdot N \right )">. Затраты памяти: <img class="tex" style="vertical-align:-4px" src="dist3_files/0b2765654e38c9207240729fa3245ef5.png" alt="O\left (M \cdot N \right)">.
+</p><p>Псевдокод алгоритма:
+</p>
+<pre><b>int</b> DamerauLevenshteinDistance(<b>char</b> S[1..M], <b>char</b> T[1..N])
+   <b>int</b> d[0..M, 0..N]
+   <b>int</b> i, j, cost
+     
+   <i>// База динамики</i>
+   <b>for</b> i <b>from</b> 0 <b>to</b> M
+      d[i, 0] = i
+   <b>for</b> j <b>from</b> 1 <b>to</b> N
+      d[0, j] = j
+    
+   <b>for</b> i <b>from</b> 1 <b>to</b> M
+      <b>for</b> j <b>from</b> 1 <b>to</b> N           
+         <i>// Стоимость замены</i>
+         <b>if</b> S[i] == T[j] <b>then</b> replaceCost = 0
+            <b>else</b> replaceCost = 1
+          
+         d[i, j] = minimum(
+                              d[i-1, j  ] + deleteCost,           <i>// удаление</i>
+                              d[i  , j-1] + insertCost,           <i>// вставка</i>
+                              d[i-1, j-1] + replaceCost           <i>// замена</i>
+                          )
+          <b>if</b>(i &gt; 1 <b>and</b> j &gt; 1 
+                   <b>and</b> S[i] == T[j-1] 
+                   <b>and</b> S[i-1] == T[j]) <b>then</b>
+             d[i, j] = minimum(
+                                  d[i, j],
+                                  d[i-2, j-2] + transposeCost <i>// транспозиция</i>
+                              )
+    
+   <b>return</b> d[M, N]
+</pre>
+<p>Контрпример: <img class="tex" style="vertical-align:0px" src="dist3_files/4e45f8ac628a530d8d70e0a91476bf73.png" alt="S ="> <img class="tex" style="vertical-align:0px" src="dist3_files/6cc9ed5af679ddadb2c2b28ad8c108ea.png" alt="'CA'"> и <img class="tex" style="vertical-align:0px" src="dist3_files/a6dd340bf28b924ef33df60c0deb0112.png" alt="T ="> <img class="tex" style="vertical-align:0px" src="dist3_files/86622a50ff8f3e1a387442eb703b7f9e.png" alt="'ABC'">. Расстояние Дамерау  — Левенштейна между строками равно 2 (<img class="tex" style="vertical-align:0px" src="dist3_files/a7116ad50777b022ed57277bc755f2bd.png" alt="CA \rightarrow AC \rightarrow ABC">),
+ однако функция приведённая выше возвратит 3. Дело в том, что 
+использование этого упрощённого алгоритма накладывает ограничение: любая
+ подстрока может быть редактирована не более одного раза. Поэтому 
+переход <img class="tex" style="vertical-align:0px" src="dist3_files/4aff79a080f4f3ec0e8c5e799fd304eb.png" alt="AC \rightarrow ABC"> невозможен, и последовательность действий такая: (<img class="tex" style="vertical-align:0px" src="dist3_files/43ecc00ded19d5c7ce590c27eac617e0.png" alt="CA \rightarrow A \rightarrow AB \rightarrow ABC">).
+</p><p>Условие многих практических задач не предполагает многократного 
+редактирования подстрок, поэтому часто достаточно упрощённого алгоритма.
+ Ниже представлен более сложный алгоритм, который корректно решает 
+задачу поиска расстояния Дамерау — Левенштейна.
+</p>
+<h2><span class="editsection">[<a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=3" title="Править секцию: Корректный алгоритм">править</a>]</span> <span class="mw-headline" id=".D0.9A.D0.BE.D1.80.D1.80.D0.B5.D0.BA.D1.82.D0.BD.D1.8B.D0.B9_.D0.B0.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC">Корректный алгоритм</span></h2>
+<p>В интересах краткости положим <img class="tex" style="vertical-align:-3px" src="dist3_files/f0c0db902289a7acf2a994c247044c35.png" alt="insertCost = deleteCost = replaceCost = transposeCost = 1">. При иной формулировке задачи формулы легко обобщаются на любой случай.
+</p><p>Сложность алгоритма: <img class="tex" style="vertical-align:-4px" src="dist3_files/3dc69d4cdb106cc4c91fed63d2611dba.png" alt="O\left (M \cdot N \cdot \max(M, N) \right )">. Затраты памяти: <img class="tex" style="vertical-align:-4px" src="dist3_files/0b2765654e38c9207240729fa3245ef5.png" alt="O\left (M \cdot N \right)">. Однако скорость работы алгоритма может быть улучшена до <img class="tex" style="vertical-align:-4px" src="dist3_files/0b2765654e38c9207240729fa3245ef5.png" alt="O\left (M \cdot N \right)">.
+</p><p>В основу алгоритма положена идея динамического программирования по префиксу. Будем хранить матрицу <img class="tex" style="vertical-align:-5px" src="dist3_files/07ca88702494215e80c4607b8c0205d9.png" alt="D[0..M + 1][0..N + 1]">, где <img class="tex" style="vertical-align:-5px" src="dist3_files/05a3bdc4f347e81c80c40196573b4af7.png" alt="D[i + 1][j + 1]"> — расстояние Дамерау  — Левенштейна между префиксами строк <img class="tex" style="vertical-align:0px" src="dist3_files/c0ee96ed63a226aac9001cdaa774d9c0.png" alt="S"> и <img class="tex" style="vertical-align:0px" src="dist3_files/649fd121052f9871e51f08f9a1aa4e5a.png" alt="T">, длины префиксов — <img class="tex" style="vertical-align:0px" src="dist3_files/ae00b0f326c629ed940b565843c38714.png" alt="i"> и <img class="tex" style="vertical-align:-3px" src="dist3_files/bacf17aa0c7bb55107f90e432dbe60da.png" alt="j"> соответственно.
+</p><p>Будем заполнять матрицу следующим образом, используя рекуррентное соотношение, описанное ниже:
+</p>
+<pre><b>for</b> i <b>from</b> 0 <b>to</b> M
+   <b>for</b> j <b>from</b> 0 <b>to</b> N
+      вычислить D(i + 1, j + 1);
+<b>return</b> D(m + 1, n + 1);
+</pre>
+<p>Для учёта транспозиции потребуется хранение следующей информации. Инвариант:
+</p><p><img class="tex" style="vertical-align:-5px" src="dist3_files/cea4e0d5d069613d774a7bb95f9c612f.png" alt="lastPosition[x]"> — индекс последнего вхождения <img class="tex" style="vertical-align:0px" src="dist3_files/cb42229ec09ac1a1093dcd9b194632c1.png" alt="x"> в <img class="tex" style="vertical-align:0px" src="dist3_files/c0ee96ed63a226aac9001cdaa774d9c0.png" alt="S">
+</p><p><img class="tex" style="vertical-align:0px" src="dist3_files/c319d6a23218a7efa6f80f9bab737a75.png" alt="last"> — на i-й итерации внешнего цикла индекс последнего символа <img class="tex" style="vertical-align:-5px" src="dist3_files/2b949c2a3930cb91aa102d1480320a4f.png" alt="T: T[last] = S[i]">
+</p><p>Тогда если на очередной итерации внутреннего цикла положить: <img class="tex" style="vertical-align:-5px" src="dist3_files/a0be845decfb8765c3258e94d693a807.png" alt="i' = lastPosition[T[j]],\ j' = last">, то
+</p><p><img class="tex" style="vertical-align:-4px" src="dist3_files/b9d01f8de0d915ab4eb5f39ec6c58644.png" alt="D(i, j) = min(A, D(i', j') + (i - i' - 1) + 1 + (j - j' - 1))"><img class="tex" style="vertical-align:-4px" src="dist3_files/cdfa382afa5884d2b6879aa8ccdf2944.png" alt="(*)">
+</p><p>, где
+</p><p><img class="tex" style="vertical-align:-86px" src="dist3_files/019f6274263de95dfe3224c43af5fe78.png" alt="A = \left\{\begin{array}{llcl} 0&amp;&amp;;&amp;i = 0,\ j = 0\\ i&amp;&amp;;&amp;j = 0,\ i &gt; 0\\ j&amp;&amp;;&amp;i = 0,\ j &gt; 0\\ D(i - 1, j - 1)&amp;&amp;;&amp;S[i] = T[j]\\ \rm{min}(\\ &amp;D(i, j - 1) + 1\\ &amp;D(i - 1, j) + 1&amp;;&amp;j &gt; 0,\ i &gt; 0,\ S[i] \ne T[j]\\ &amp;D(i - 1, j - 1) + 1\\ ) \end{array}\right.">
+</p><p>Доказательства требует лишь формула <img class="tex" style="vertical-align:-4px" src="dist3_files/cdfa382afa5884d2b6879aa8ccdf2944.png" alt="(*)">, смысл которой — сравнение стоимости перехода без использования транспозиции (<img class="tex" style="vertical-align:0px" src="dist3_files/6fc9797585b16228ee9f1e5a14c5c2b6.png" alt="A">)
+ со стоимостью перехода, включающего в число операций транспозицию; 
+остальные формулы обосновываются так же, как и в доказательстве <a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%BC_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8,_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%92%D0%B0%D0%B3%D0%BD%D0%B5%D1%80%D0%B0-%D0%A4%D0%B8%D1%88%D0%B5%D1%80%D0%B0" title="Задача о редакционном расстоянии, алгоритм Вагнера-Фишера">алгоритма Вагнера — Фишера</a>.
+ Но действительно, при редактировании подпоследовательности несколько 
+раз всегда существует оптимальная последовательность операций одного из 
+двух видов:
+</p>
+<ul><li>Переставить местами соседние символы, затем вставить некоторое количество символов между ними;
+</li><li>Удалить некоторое количество символов, а затем переставить местами символы, ставшие соседними.
+</li></ul>
+<p>Тогда если символ <img class="tex" style="vertical-align:-5px" src="dist3_files/0e78542527bbc4aa3c12a84d83ec5588.png" alt="S[i]"> встречался в <img class="tex" style="vertical-align:-5px" src="dist3_files/01a5288905887020d9855c0be84f0438.png" alt="T[1]..T[j]"> на позиции <img class="tex" style="vertical-align:-3px" src="dist3_files/0ca9b8ae370fc8294b6505f04560cf4b.png" alt="j'">, а символ <img class="tex" style="vertical-align:-5px" src="dist3_files/aca9902b9cf8407c4f6505ccf818c6a4.png" alt="T[j]"> встречался в <img class="tex" style="vertical-align:-5px" src="dist3_files/880cc76364951c439e35ffdaafa668a3.png" alt="S[1]..S[i]"> на позиции <img class="tex" style="vertical-align:0px" src="dist3_files/fc110d38b0c3f573976325d7b39f028c.png" alt="i'">; то <img class="tex" style="vertical-align:-5px" src="dist3_files/01a5288905887020d9855c0be84f0438.png" alt="T[1]..T[j]"> может быть получена из <img class="tex" style="vertical-align:-5px" src="dist3_files/880cc76364951c439e35ffdaafa668a3.png" alt="S[1]..S[i]"> удалением символов <img class="tex" style="vertical-align:-5px" src="dist3_files/8d3c7412e1dd29e0a669a9c2e64447f0.png" alt="S[i' + 1]..S[i - 1]">, транспозицией ставших соседними <img class="tex" style="vertical-align:-5px" src="dist3_files/986909529e3dfe9064b7599aa9cc4561.png" alt="S[i']"> и <img class="tex" style="vertical-align:-5px" src="dist3_files/0e78542527bbc4aa3c12a84d83ec5588.png" alt="S[i]"> и вставкой символов <img class="tex" style="vertical-align:-5px" src="dist3_files/f457cb43886eeed3c043f4f02ac560ec.png" alt="T[j' + 1]..T[j - 1]">. Суммарно на это будет затрачено <img class="tex" style="vertical-align:-4px" src="dist3_files/649506e8db0de6d99affdd1a4366d032.png" alt="D(i', j') + (i - i' - 1) + 1 + (j - j' - 1)"> операций, что описано в <img class="tex" style="vertical-align:-4px" src="dist3_files/cdfa382afa5884d2b6879aa8ccdf2944.png" alt="(*)">. Поэтому мы выбирали оптимальную последовательность операций, рассматрев случай с транспозицией и без неё.
+</p><p>Псевдокод алгоритма:
+</p>
+<pre><b>int</b> DamerauLevenshteinDistance(<b>char</b> S[1..M], <b>char</b> T[1..N])
+   <i>// Обработка крайних случаев</i>
+   <b>if</b> (S == "") <b>then</b>
+      <b>if</b> (T == "") <b>then</b>
+         <b>return</b> 0
+      <b>else</b>
+         <b>return</b> N
+   <b>else</b> <b>if</b> (T == "") <b>then</b>
+      <b>return</b> M
+   <b>int</b> D[0..M + 1, 0..N + 1]          <i>// Динамика</i>
+   <b>int</b> INF = M + N                    <i>// Большая константа</i>
+    
+   <i>// База индукции</i>
+   D[0, 0] = INF;
+   <b>for</b> i <b>from</b> 0 <b>to</b> M
+      D[i + 1, 1] = i
+      D[i + 1, 0] = INF
+   <b>for</b> j <b>from</b> 0 <b>to</b> N
+      D[1, j + 1] = j
+      D[0, j + 1] = INF
+    
+   <b>int</b> lastPosition[0..количество различных символов в S и T]
+   <i>//для каждого элемента C алфавита задано значение lastPosition[C]</i> 
+    
+   <b>foreach</b> (<b>char</b> Letter <b>in</b> (S + T))
+      <b>if</b> Letter не содержится в lastPosition
+         добавить Letter в lastPosition
+         lastPosition[Letter] = 0
+    
+   <b>for</b> i <b>from</b> 1 <b>to</b> M
+      <b>int</b> last = 0
+      <b>for</b> j <b>from</b> 1 <b>to</b> N
+         <b>int</b> i' = lastPosition[T[j]]
+         <b>int</b> j' = last
+         <b>if</b> S[i] == T[j] <b>then</b>
+            D[i + 1, j + 1] = D[i, j]
+            last = j
+         <b>else</b>
+            D[i + 1, j + 1] = minimum(D[i, j], D[i + 1, j], D[i, j + 1]) + 1
+         D[i + 1, j + 1] = minimum(D[i + 1, j + 1], D[i' + 1, j' + 1] + (i - i' - 1) + 1 + (j - j' - 1))
+      lastPosition[S[i]] = i
+     
+   <b>return</b> D[M + 1, N + 1]
+</pre>
+<h2><span class="editsection">[<a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=4" title="Править секцию: См. также">править</a>]</span> <span class="mw-headline" id=".D0.A1.D0.BC._.D1.82.D0.B0.D0.BA.D0.B6.D0.B5">См. также</span></h2>
+<ul><li><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%BC_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8,_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%92%D0%B0%D0%B3%D0%BD%D0%B5%D1%80%D0%B0-%D0%A4%D0%B8%D1%88%D0%B5%D1%80%D0%B0" title="Задача о редакционном расстоянии, алгоритм Вагнера-Фишера">Задача о редакционном расстоянии, алгоритм Вагнера-Фишера</a>
+</li></ul>
+<h2><span class="editsection">[<a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;section=5" title="Править секцию: Cсылки">править</a>]</span> <span class="mw-headline" id="C.D1.81.D1.8B.D0.BB.D0.BA.D0.B8">Cсылки</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance">Статья на английской Википедии</a>
+</li><li><a rel="nofollow" class="external text" href="http://habrahabr.ru/blogs/algorithm/114997/">Нечёткий поиск в тексте и словаре (Хабрахабр)</a>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 580/1000000
+Post-expand include size: 1515/2097152 bytes
+Template argument size: 514/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key wikidb:pcache:idhash:1608-0!*!0!!ru!*!* and timestamp 20120928212210 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Источник — «<a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=18545">http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=18545</a>»				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:Categories" title="Служебная:Categories">Категории</a>: <ul><li><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%94%D0%B8%D1%81%D0%BA%D1%80%D0%B5%D1%82%D0%BD%D0%B0%D1%8F_%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0_%D0%B8_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B" title="Категория:Дискретная математика и алгоритмы">Дискретная математика и алгоритмы</a></li><li><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%94%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5" title="Категория:Динамическое программирование">Динамическое программирование</a></li></ul></div></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Личные инструменты</h5>
+	<ul>
+		<li id="pt-login"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:UserLogin&amp;returnto=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0+%D0%BE+%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8+%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Здесь можно зарегистрироваться в системе, но это необязательно. [alt-shift-o]" accesskey="o">Представиться / зарегистрироваться</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Пространства имён</h5>
+	<ul>
+					<li id="ca-nstab-main" class="selected"><span><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Содержание статьи [alt-shift-c]" accesskey="c">Статья</a></span></li>
+					<li id="ca-talk" class="new"><span><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit&amp;redlink=1" title="Обсуждение содержания страницы [alt-shift-t]" accesskey="t">Обсуждение</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+		<h5><span>Варианты</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Просмотры</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0">Чтение</a></span></li>
+					<li id="ca-edit"><span><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=edit" title="Эту страницу можно изменять. Используйте, пожалуйста, предварительный просмотр перед сохранением [alt-shift-e]" accesskey="e">Правка</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;action=history" title="Журнал изменений страницы [alt-shift-h]" accesskey="h">История</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Действия</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Поиск</label></h5>
+	<form action="/wiki/index.php" id="searchform">
+		<input name="title" value="Служебная:Search" type="hidden">
+				<input name="search" title="Искать это слово [alt-shift-f]" accesskey="f" id="searchInput" type="search">		<input name="go" value="Перейти" title="Перейти к странице, имеющей в точности такое название" id="searchGoButton" class="searchButton" type="submit">		<input name="fulltext" value="Найти" title="Найти страницы, содержащие указанный текст" id="mw-searchButton" class="searchButton" type="submit">			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(/wiki/skins/logo.png);" href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0" title="Заглавная страница"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id="p-navigation">
+	<h5>Навигация</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0" title="Перейти на заглавную страницу [alt-shift-z]" accesskey="z">Заглавная страница</a></li>
+			<li id="n-portal"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%92%D0%B8%D0%BA%D0%B8%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B:%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D0%BB_%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0" title="О проекте, о том, что вы можете сделать, где что находится">Сообщество</a></li>
+			<li id="n-currentevents"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%92%D0%B8%D0%BA%D0%B8%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B:%D0%A2%D0%B5%D0%BA%D1%83%D1%89%D0%B8%D0%B5_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F" title="Список текущих событий">Текущие события</a></li>
+			<li id="n-recentchanges"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:RecentChanges" title="Список последних изменений [alt-shift-r]" accesskey="r">Свежие правки</a></li>
+			<li id="n-randompage"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:Random" title="Посмотреть случайную страницу [alt-shift-x]" accesskey="x">Случайная статья</a></li>
+			<li id="n-help"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B0:%D0%A1%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5" title="Справочник по проекту «Викиконспекты»">Справка</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Инструменты</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:WhatLinksHere/%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Список всех страниц, которые ссылаются на эту страницу [alt-shift-j]" accesskey="j">Ссылки сюда</a></li>
+			<li id="t-recentchangeslinked"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:RecentChangesLinked/%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0" title="Последние изменения в страницах, на которые ссылается эта страница [alt-shift-k]" accesskey="k">Связанные правки</a></li>
+			<li id="t-specialpages"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:SpecialPages" title="Список служебных страниц [alt-shift-q]" accesskey="q">Спецстраницы</a></li>
+			<li><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;printable=yes" rel="alternate">Версия для печати</a></li>
+			<li id="t-permalink"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0_%D0%BE_%D1%80%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8_%D0%94%D0%B0%D0%BC%D0%B5%D1%80%D0%B0%D1%83-%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0&amp;oldid=18545" title="Постоянная ссылка на эту версию страницы">Постоянная ссылка</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> Последнее изменение этой страницы: 21:29, 29 февраля 2012.</li>
+											<li id="footer-info-viewcount">К этой странице обращались 618 раз.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%92%D0%B8%D0%BA%D0%B8%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B:%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0_%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8" title="Викиконспекты:Политика конфиденциальности">Политика конфиденциальности</a></li>
+											<li id="footer-places-about"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%92%D0%B8%D0%BA%D0%B8%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B:%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5" title="Викиконспекты:Описание">Описание Викиконспекты</a></li>
+											<li id="footer-places-disclaimer"><a href="http://neerc.ifmo.ru/wiki/index.php?title=%D0%92%D0%B8%D0%BA%D0%B8%D0%BA%D0%BE%D0%BD%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B:%D0%9E%D1%82%D0%BA%D0%B0%D0%B7_%D0%BE%D1%82_%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8" title="Викиконспекты:Отказ от ответственности">Отказ от ответственности</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="dist3_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" height="31" width="88"></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		<script src="dist3_files/load_002.php"></script>
+<script>if(window.mw){
+	mw.loader.load(["mediawiki.user", "mediawiki.util", "mediawiki.page.ready", "mediawiki.legacy.wikibits", "mediawiki.legacy.ajax"]);
+}
+</script><script type="text/javascript" src="dist3_files/load_004.php"></script>
+<script>if(window.mw){
+	mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,
+	"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"ru","language":"ru","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;mw.user.tokens.set({"editToken":"+\\","watchToken":false});;mw.loader.state({"user.options":"ready","user.tokens":"ready"});
+	
+	/* cache key: wikidb:resourceloader:filter:minify-js:4:aaf8401d513bbad8a78707aa1d2bbff3 */
+}
+</script><!-- Served in 0.136 secs. -->
+	
+
+</body></html>
