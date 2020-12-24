@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LearningModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="LearningModelStoreContainer">
+    <EntitySet Name="StudentGroupSet" EntityType="LearningModel.Store.StudentGroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubjectTypeSet" EntityType="LearningModel.Store.SubjectTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubjectSet" EntityType="LearningModel.Store.SubjectSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentGroupSet_StudentGroupSpecial" EntityType="LearningModel.Store.StudentGroupSet_StudentGroupSpecial" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentGroupSubject" EntityType="LearningModel.Store.StudentGroupSubject" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="SubjectSubjectType" Association="LearningModel.Store.SubjectSubjectType">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentGroupSubject_StudentGroup" Association="LearningModel.Store.FK_StudentGroupSubject_StudentGroup">
+      <End Role="StudentGroup" EntitySet="StudentGroupSet" />
+      <End Role="StudentGroupSubject" EntitySet="StudentGroupSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentGroupSubject_Subject" Association="LearningModel.Store.FK_StudentGroupSubject_Subject">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="StudentGroupSubject" EntitySet="StudentGroupSubject" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectTypeSubjectType" Association="LearningModel.Store.SubjectTypeSubjectType">
+      <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+      <End Role="SubjectType1" EntitySet="SubjectTypeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentGroupSpecial_inherits_StudentGroup" Association="LearningModel.Store.FK_StudentGroupSpecial_inherits_StudentGroup">
+      <End Role="StudentGroup" EntitySet="StudentGroupSet" />
+      <End Role="StudentGroupSpecial" EntitySet="StudentGroupSet_StudentGroupSpecial" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="StudentGroupSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectTypeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SubjectTypeId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="SubjectSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
+    <Property Name="SubjectType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentGroupSet_StudentGroupSpecial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Flag" Type="bit" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentGroupSubject">
+    <Key>
+      <PropertyRef Name="StudentGroup_Id" />
+      <PropertyRef Name="Subject_Id" />
+    </Key>
+    <Property Name="StudentGroup_Id" Type="int" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="SubjectSubjectType">
+    <End Role="Subject" Type="LearningModel.Store.SubjectSet" Multiplicity="*" />
+    <End Role="SubjectType" Type="LearningModel.Store.SubjectTypeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="SubjectType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubjectTypeSubjectType">
+    <End Role="SubjectType" Type="LearningModel.Store.SubjectTypeSet" Multiplicity="0..1" />
+    <End Role="SubjectType1" Type="LearningModel.Store.SubjectTypeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubjectType1">
+        <PropertyRef Name="SubjectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentGroupSubject_StudentGroup">
+    <End Role="StudentGroup" Type="LearningModel.Store.StudentGroupSet" Multiplicity="1" />
+    <End Role="StudentGroupSubject" Type="LearningModel.Store.StudentGroupSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentGroupSubject">
+        <PropertyRef Name="StudentGroup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentGroupSubject_Subject">
+    <End Role="StudentGroupSubject" Type="LearningModel.Store.StudentGroupSubject" Multiplicity="*" />
+    <End Role="Subject" Type="LearningModel.Store.SubjectSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentGroupSubject">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentGroupSpecial_inherits_StudentGroup">
+    <End Role="StudentGroup" Type="LearningModel.Store.StudentGroupSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StudentGroupSpecial" Type="LearningModel.Store.StudentGroupSet_StudentGroupSpecial" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="StudentGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentGroupSpecial">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="LearningModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="LearningModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="StudentGroupSet" EntityType="LearningModel.StudentGroup" />
+          <EntitySet Name="SubjectTypeSet" EntityType="LearningModel.SubjectType" />
+          <EntitySet Name="SubjectSet" EntityType="LearningModel.Subject" />
+          <AssociationSet Name="SubjectSubjectType" Association="LearningModel.SubjectSubjectType">
+            <End Role="Subject" EntitySet="SubjectSet" />
+            <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+          </AssociationSet>
+          <AssociationSet Name="StudentGroupSubject" Association="LearningModel.StudentGroupSubject">
+            <End Role="StudentGroup" EntitySet="StudentGroupSet" />
+            <End Role="Subject" EntitySet="SubjectSet" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectTypeSubjectType" Association="LearningModel.SubjectTypeSubjectType">
+            <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+            <End Role="SubjectType1" EntitySet="SubjectTypeSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="StudentGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="GroupName" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="LearningModel.StudentGroupSubject" FromRole="StudentGroup" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="StudentGroupSpecial" BaseType="LearningModel.StudentGroup" >
+          <Property Type="Boolean" Name="Flag" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TypeName" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="LearningModel.SubjectSubjectType" FromRole="SubjectType" ToRole="Subject" />
+          <NavigationProperty Name="ChildSubjectTypes" Relationship="LearningModel.SubjectTypeSubjectType" FromRole="SubjectType" ToRole="SubjectType1" />
+          <NavigationProperty Name="ParentSubjectType" Relationship="LearningModel.SubjectTypeSubjectType" FromRole="SubjectType1" ToRole="SubjectType" />
+          <Property Type="Int32" Name="SubjectTypeId" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SubjectName" Nullable="false" />
+          <NavigationProperty Name="SubjectType" Relationship="LearningModel.SubjectSubjectType" FromRole="Subject" ToRole="SubjectType" />
+          <NavigationProperty Name="StudentGroup" Relationship="LearningModel.StudentGroupSubject" FromRole="Subject" ToRole="StudentGroup" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+        </EntityType>
+        <Association Name="SubjectSubjectType">
+          <End Type="LearningModel.Subject" Role="Subject" Multiplicity="*" />
+          <End Type="LearningModel.SubjectType" Role="SubjectType" Multiplicity="1" />
+        </Association>
+        <Association Name="StudentGroupSubject">
+          <End Type="LearningModel.StudentGroup" Role="StudentGroup" Multiplicity="*" />
+          <End Type="LearningModel.Subject" Role="Subject" Multiplicity="*" />
+        </Association>
+        <Association Name="SubjectTypeSubjectType">
+          <End Type="LearningModel.SubjectType" Role="SubjectType" Multiplicity="0..1" />
+          <End Type="LearningModel.SubjectType" Role="SubjectType1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubjectType1">
+              <PropertyRef Name="SubjectTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LearningModelStoreContainer" CdmEntityContainer="LearningModelContainer">
+    <EntitySetMapping Name="StudentGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.StudentGroup)">
+        <MappingFragment StoreEntitySet="StudentGroupSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.StudentGroupSpecial)">
+        <MappingFragment StoreEntitySet="StudentGroupSet_StudentGroupSpecial">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.SubjectType)">
+        <MappingFragment StoreEntitySet="SubjectTypeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="SubjectTypeId" ColumnName="SubjectTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectSet">
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.Subject)">
+        <MappingFragment StoreEntitySet="SubjectSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SubjectSubjectType" TypeName="LearningModel.SubjectSubjectType" StoreEntitySet="SubjectSet">
+      <EndProperty Name="SubjectType">
+        <ScalarProperty Name="Id" ColumnName="SubjectType_Id" />
+      </EndProperty>
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StudentGroupSubject" TypeName="LearningModel.StudentGroupSubject" StoreEntitySet="StudentGroupSubject">
+      <EndProperty Name="StudentGroup">
+        <ScalarProperty Name="Id" ColumnName="StudentGroup_Id" />
+      </EndProperty>
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="LearningModel" >
+        <EntityTypeShape EntityType="LearningModel.StudentGroup" Width="1.5" PointX="2" PointY="1.875" Height="1.4033821614583331" />
+        <EntityTypeShape EntityType="LearningModel.StudentGroupSpecial" Width="1.75" PointX="1.875" PointY="4" Height="1.211080729166667" />
+        <InheritanceConnector EntityType="LearningModel.StudentGroupSpecial" ManuallyRouted="false" >
+          <ConnectorPoint PointX="2.75" PointY="3.47068359375" />
+          <ConnectorPoint PointX="2.75" PointY="4" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="LearningModel.SubjectType" Width="1.5" PointX="7.5" PointY="1.875" Height="1.59568359375" />
+        <EntityTypeShape EntityType="LearningModel.Subject" Width="1.5" PointX="4.875" PointY="1.875" Height="1.9802864583333331" />
+        <AssociationConnector Association="LearningModel.SubjectSubjectType">
+          <ConnectorPoint PointX="6.375" PointY="2.672841796875" />
+          <ConnectorPoint PointX="7.5" PointY="2.672841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="LearningModel.StudentGroupSubject">
+          <ConnectorPoint PointX="3.5" PointY="2.672841796875" />
+          <ConnectorPoint PointX="4.875" PointY="2.672841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="LearningModel.SubjectTypeSubjectType">
+          <ConnectorPoint PointX="8.0319230769230767" PointY="4.047587890625" />
+          <ConnectorPoint PointX="8.0319230769230767" PointY="4.297587890625" />
+          <ConnectorPoint PointX="8.47846153846154" PointY="4.297587890625" />
+          <ConnectorPoint PointX="8.47846153846154" PointY="4.047587890625" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

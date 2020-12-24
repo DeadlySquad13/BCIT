@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LearningModelStoreContainer" CdmEntityContainer="LearningModelContainer">
+    <EntitySetMapping Name="StudentGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.StudentGroup)">
+        <MappingFragment StoreEntitySet="StudentGroupSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.StudentGroupSpecial)">
+        <MappingFragment StoreEntitySet="StudentGroupSet_StudentGroupSpecial">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.SubjectType)">
+        <MappingFragment StoreEntitySet="SubjectTypeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="SubjectTypeId" ColumnName="SubjectTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectSet">
+      <EntityTypeMapping TypeName="IsTypeOf(LearningModel.Subject)">
+        <MappingFragment StoreEntitySet="SubjectSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SubjectSubjectType" TypeName="LearningModel.SubjectSubjectType" StoreEntitySet="SubjectSet">
+      <EndProperty Name="SubjectType">
+        <ScalarProperty Name="Id" ColumnName="SubjectType_Id" />
+      </EndProperty>
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StudentGroupSubject" TypeName="LearningModel.StudentGroupSubject" StoreEntitySet="StudentGroupSubject">
+      <EndProperty Name="StudentGroup">
+        <ScalarProperty Name="Id" ColumnName="StudentGroup_Id" />
+      </EndProperty>
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="Subject_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

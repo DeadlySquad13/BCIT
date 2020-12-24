@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="LearningModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="LearningModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="StudentGroupSet" EntityType="LearningModel.StudentGroup" />
+    <EntitySet Name="SubjectTypeSet" EntityType="LearningModel.SubjectType" />
+    <EntitySet Name="SubjectSet" EntityType="LearningModel.Subject" />
+    <AssociationSet Name="SubjectSubjectType" Association="LearningModel.SubjectSubjectType">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+    </AssociationSet>
+    <AssociationSet Name="StudentGroupSubject" Association="LearningModel.StudentGroupSubject">
+      <End Role="StudentGroup" EntitySet="StudentGroupSet" />
+      <End Role="Subject" EntitySet="SubjectSet" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectTypeSubjectType" Association="LearningModel.SubjectTypeSubjectType">
+      <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+      <End Role="SubjectType1" EntitySet="SubjectTypeSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="StudentGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GroupName" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="LearningModel.StudentGroupSubject" FromRole="StudentGroup" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="StudentGroupSpecial" BaseType="LearningModel.StudentGroup">
+    <Property Type="Boolean" Name="Flag" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="TypeName" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="LearningModel.SubjectSubjectType" FromRole="SubjectType" ToRole="Subject" />
+    <NavigationProperty Name="ChildSubjectTypes" Relationship="LearningModel.SubjectTypeSubjectType" FromRole="SubjectType" ToRole="SubjectType1" />
+    <NavigationProperty Name="ParentSubjectType" Relationship="LearningModel.SubjectTypeSubjectType" FromRole="SubjectType1" ToRole="SubjectType" />
+    <Property Type="Int32" Name="SubjectTypeId" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="SubjectName" Nullable="false" />
+    <NavigationProperty Name="SubjectType" Relationship="LearningModel.SubjectSubjectType" FromRole="Subject" ToRole="SubjectType" />
+    <NavigationProperty Name="StudentGroup" Relationship="LearningModel.StudentGroupSubject" FromRole="Subject" ToRole="StudentGroup" />
+    <Property Type="Int32" Name="Value" Nullable="false" />
+  </EntityType>
+  <Association Name="SubjectSubjectType">
+    <End Type="LearningModel.Subject" Role="Subject" Multiplicity="*" />
+    <End Type="LearningModel.SubjectType" Role="SubjectType" Multiplicity="1" />
+  </Association>
+  <Association Name="StudentGroupSubject">
+    <End Type="LearningModel.StudentGroup" Role="StudentGroup" Multiplicity="*" />
+    <End Type="LearningModel.Subject" Role="Subject" Multiplicity="*" />
+  </Association>
+  <Association Name="SubjectTypeSubjectType">
+    <End Type="LearningModel.SubjectType" Role="SubjectType" Multiplicity="0..1" />
+    <End Type="LearningModel.SubjectType" Role="SubjectType1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubjectType1">
+        <PropertyRef Name="SubjectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

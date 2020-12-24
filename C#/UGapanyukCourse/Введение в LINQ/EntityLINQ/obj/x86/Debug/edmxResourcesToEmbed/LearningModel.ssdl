@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LearningModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="LearningModelStoreContainer">
+    <EntitySet Name="StudentGroupSet" EntityType="LearningModel.Store.StudentGroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubjectTypeSet" EntityType="LearningModel.Store.SubjectTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubjectSet" EntityType="LearningModel.Store.SubjectSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentGroupSet_StudentGroupSpecial" EntityType="LearningModel.Store.StudentGroupSet_StudentGroupSpecial" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentGroupSubject" EntityType="LearningModel.Store.StudentGroupSubject" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="SubjectSubjectType" Association="LearningModel.Store.SubjectSubjectType">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentGroupSubject_StudentGroup" Association="LearningModel.Store.FK_StudentGroupSubject_StudentGroup">
+      <End Role="StudentGroup" EntitySet="StudentGroupSet" />
+      <End Role="StudentGroupSubject" EntitySet="StudentGroupSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentGroupSubject_Subject" Association="LearningModel.Store.FK_StudentGroupSubject_Subject">
+      <End Role="Subject" EntitySet="SubjectSet" />
+      <End Role="StudentGroupSubject" EntitySet="StudentGroupSubject" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectTypeSubjectType" Association="LearningModel.Store.SubjectTypeSubjectType">
+      <End Role="SubjectType" EntitySet="SubjectTypeSet" />
+      <End Role="SubjectType1" EntitySet="SubjectTypeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentGroupSpecial_inherits_StudentGroup" Association="LearningModel.Store.FK_StudentGroupSpecial_inherits_StudentGroup">
+      <End Role="StudentGroup" EntitySet="StudentGroupSet" />
+      <End Role="StudentGroupSpecial" EntitySet="StudentGroupSet_StudentGroupSpecial" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="StudentGroupSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectTypeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SubjectTypeId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="SubjectSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
+    <Property Name="SubjectType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentGroupSet_StudentGroupSpecial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Flag" Type="bit" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentGroupSubject">
+    <Key>
+      <PropertyRef Name="StudentGroup_Id" />
+      <PropertyRef Name="Subject_Id" />
+    </Key>
+    <Property Name="StudentGroup_Id" Type="int" Nullable="false" />
+    <Property Name="Subject_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="SubjectSubjectType">
+    <End Role="Subject" Type="LearningModel.Store.SubjectSet" Multiplicity="*" />
+    <End Role="SubjectType" Type="LearningModel.Store.SubjectTypeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="SubjectType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubjectTypeSubjectType">
+    <End Role="SubjectType" Type="LearningModel.Store.SubjectTypeSet" Multiplicity="0..1" />
+    <End Role="SubjectType1" Type="LearningModel.Store.SubjectTypeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubjectType1">
+        <PropertyRef Name="SubjectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentGroupSubject_StudentGroup">
+    <End Role="StudentGroup" Type="LearningModel.Store.StudentGroupSet" Multiplicity="1" />
+    <End Role="StudentGroupSubject" Type="LearningModel.Store.StudentGroupSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentGroupSubject">
+        <PropertyRef Name="StudentGroup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentGroupSubject_Subject">
+    <End Role="StudentGroupSubject" Type="LearningModel.Store.StudentGroupSubject" Multiplicity="*" />
+    <End Role="Subject" Type="LearningModel.Store.SubjectSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentGroupSubject">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentGroupSpecial_inherits_StudentGroup">
+    <End Role="StudentGroup" Type="LearningModel.Store.StudentGroupSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StudentGroupSpecial" Type="LearningModel.Store.StudentGroupSet_StudentGroupSpecial" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="StudentGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentGroupSpecial">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
